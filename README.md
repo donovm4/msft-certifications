@@ -2,4 +2,6 @@
 
 ## checklist
 
-[x] test
+- [x] AZ-900
+- [ ] AI-900
+- [ ] DP-900
