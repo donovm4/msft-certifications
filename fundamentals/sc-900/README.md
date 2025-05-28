@@ -24,7 +24,7 @@
 - Audit
   - What has the user *done*?
 
-## Identity Provider (IdP)
+### Identity Provider (IdP)
 
 Entra ID Tenant:
 - Azure
@@ -153,7 +153,9 @@ When the password is being validated, the hash is generated and compared to what
 - Compliance
   - what rules do the organization need to adhere to?
 
-## Active Directory Domain Services
+## Authentication
+
+### Active Directory Domain Services
 
 Authentication for on-prem: 
 - Kerberos
@@ -179,7 +181,7 @@ Let's say we have two tenants:
 
 **Federated trust** is when `Tenant_A` trusts `Tenant_B` to run through authentication processes, which will then allow `User1` to access `Tenant_A` 'from' `Tenant_B`.
 
-## Types of accounts
+### Types of accounts
 
 - Internal user
   - created in 'our' identity provider
@@ -199,8 +201,6 @@ Let's say we have two tenants:
   - device itselft is known through Entra
 - Hybrid-joined device
   - combination of joined and registered
-
-## Authentication
 
 ### Multifactor Authentication (MFA)
 
@@ -251,3 +251,290 @@ User has already be *authenticated*, now we move onto **access**
 - What scope does the identity has permissions over?
 
 ## Audit and governance
+
+### Entra Identity Governance
+- triggers
+- actions
+- dynamic groups
+
+### Access Reviews
+- validates permissions needed
+- can be proctored process
+- can be self-serviced process
+
+### Privilege Identity Management (PIM)
+
+### Identity protection
+- User Risk Level assessment
+- specific sign-in actions
+
+### Permissions management
+- cross-cloud
+- identifies which permissions are *granted*
+- identifies which permissions are *used*
+
+### Entra Private Access
+- TCP
+- UDP
+- facilitates traffic from device to Entra to private network
+- facilitates traffic from device to Entra to Internet
+
+## Security Solutions
+
+### Azure
+
+#### DDoS Protection
+
+**Distributed denial of service** (DDoS) attacks try to exhaust application reources making it unavailable to actual users.
+
+- protects at layers 3 and 4
+- automatic adaptive-tuning to protect resources
+- requires no application or resource changes
+- analytics
+- metrics
+- alerts
+
+- Tiers: 
+  - Network protection
+  - IP protection
+
+#### Azure Firewall
+
+- works within the virtual network
+- works on layers 4 and 7
+
+#### Azure Web Application Friewall (WAF)
+
+- exploit protection
+- SQL injection
+- cross-site attacks
+- DDoS protection
+
+> Azure Front Door is global  
+> Region WAF
+
+#### Network Security Group (NSGs)
+
+- Source Port
+- Source IP
+- Destination Port
+- Destination IP
+- Protocol
+- Rules:
+  - Allow
+  - Deny
+
+#### Azure Virtual Network Manager
+
+- Security Admin rules 
+- priority over NSGs
+- Rules:
+  - Allow
+  - Always Allow
+  - Deny
+
+#### Azure Bastion
+
+- securely connect to VMs in Azure **WITHOUT** public ip
+- working around to prevent port-scanning.
+- RDP
+- SSH
+- SKUs:  
+  - Basic
+  - Standard
+  - Premium
+
+#### Azure Key Vault
+
+##### Secrets
+
+- passwords
+- shared access signatures
+
+Something you write and read
+
+##### Keys
+
+- import
+- generate
+- cannot be exported from Key Vault
+- run cryptographic operations
+
+##### Certifications
+
+- lifecycle management on certificates
+- TLS certificates for example
+- Tiers:
+  - Standard
+    - software-protected keys
+    - key rotation
+  - Premium
+    - software-protected keys
+    - HSM-protected keys
+    - key rotation
+
+### MSFT Defender for Cloud
+
+#### CNAPP - Cloud Native App Protection Platform
+
+##### CSPM - Cloud Security Posture Management
+
+- leverages Azure Policy
+- Microsoft Security Benchmark
+
+##### CWPP - Cloud Workload Protection Platform
+
+Other solution areas under the Defender suite:
+
+- Storage
+- Servers
+- Compute
+- Databases
+
+##### DevSecOps
+
+The goal here is to implement security practices earlier in the development pipelines:
+
+- GitHub
+- DockerHub
+- Azure DevOps
+
+### MSFT Sentinel
+
+#### SIEM - Security Incident and Event Management
+
+- collect signals from various systems:
+  - agents
+  - logs
+  - diagnostic settings
+- detect issues
+- investigate
+
+#### SOAR - Security Orchestration Automated Response
+
+- investigate
+- respond automatically
+
+### Security Copilot
+
+Works in the same way as everything else, BUT incorporates the use of AI, usually large language models (LLMs).
+- natural language
+- prompt engineering
+
+Integration / Embedded: 
+
+- Sentinel
+- Entra
+- Intune
+- Defender
+- Purview
+
+### Defender XDR
+
+> Integrated with Sentinel portal
+
+Solutions for:
+
+- Office 365
+- Defender for Endpoint
+- Cloud apps
+- Defender for Identity
+- vulnerability management
+- threat intelligence
+
+## Compliance
+
+6 Key Principles:
+
+- Control
+- Transparency
+- Security
+- Strong legal protections
+- No content-based targeting
+- Benefit the customer
+
+### Service Trust Portal
+
+- certifications
+- references
+- standards used
+- reports
+- industry details
+- regional details
+
+### MSFT Priva
+
+- helps organizations understand what Private Personal Data they have and what to do with it
+  - discovery
+  - risk management
+  - limit transfer
+  - subject rights request
+  - workflow automation
+  - reporting
+
+### Purview
+
+Various solutions available
+
+- Governance
+- Compliance
+  - Compliance Manager
+    - compliance score
+    - organization responsibilities
+    - MSFT responsibilities
+    - improvement actions
+    - assessments
+    - regulations
+    - policies
+    - alerts
+- Data security
+  - Data Lifecycle Management
+    1. Know the Data
+        - Find Data
+        - Classify the Data (trainable classifiers, sensitive types, EDM)
+          - Built-in
+          - Custom
+    2. Protect the Data
+        - Sensitivity labels
+        - watermarks
+        - encryption 
+    3. Prevent Loss
+        - DLP - digital loss protection
+    4. Govern the Data
+        - Policies
+          - Retention
+          - Deletion
+          - Labels
+        - Records management
+
+#### Content Search
+
+#### eDiscovery (Standard)
+
+- case creation
+- legal holds
+
+#### eDiscovery (Premium)
+
+- complete e2e workflow
+
+## Audit
+
+M365 Operations are captured to a log.
+
+Users can search against the logs.
+
+Tiers:  
+
+- Standard
+  - 90-day retention
+  - command access
+  - GUI access
+  - API access
+- Premium
+  - 1 year retention
+  - higher bandwidth
+  - command access
+  - GUI access
+  - API access
+
