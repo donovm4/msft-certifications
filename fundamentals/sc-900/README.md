@@ -199,3 +199,55 @@ Let's say we have two tenants:
   - device itselft is known through Entra
 - Hybrid-joined device
   - combination of joined and registered
+
+## Authentication
+
+### Multifactor Authentication (MFA)
+
+> Something I know, I have, I am
+
+#### Methods (combination)
+
+- Passwords
+- SMS
+- Voice
+- tokens (software / hardware / one-time passcode)
+
+### Passwords
+
+Password only is not secure - VERY BAD!
+
+It is better to use multiple methods to prove the user is who they say they are.
+
+### Passwordless
+
+> - fill in later
+
+### Passkeys
+
+- Phishing-resistant
+- Proximity-based
+
+> Authenticator App  
+> Windows Hello for Business
+> FIDO
+
+### Self-service password reset
+
+- lockout thresholds
+- nummber of methods needed to complete reset
+- security questions
+
+## Authorization
+
+> Mainly focusing on conditional access
+
+User has already be *authenticated*, now we move onto **access**
+
+### Role-based Access Control (RBAC)
+
+- What is the desired role / set of permissions?
+- What identity do I want to assign the role to?
+- What scope does the identity has permissions over?
+
+## Audit and governance
