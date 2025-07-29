@@ -103,7 +103,42 @@
     - scripts
     - containers
 
+## Users & Guests
 
+### Internal
+
+Interal members are most likely full-time users in the organization.  
+Internal guests are users with guest-level permissions.  
+
+### External
+
+External users are users that have external accounts but have member access... pretty common in multitenant organizations.  
+External guests are users autheniticate using external methods and have guest-level privileges.
+
+
+
+## Terminology & Key Terms
+
+- `Identity`: _anything_ that can get **authenticated**
+- `Account`: identity with data associated
+- `Entra account`: identity created through Entra ID
+  > Sometimes can be a Work or School account.
+- `Account Administrator`: role that enables user to manage all subscriptions in an account
+  > conceptually the billing owner of the subscription
+- `Service Administrator`: role that enables user to manage all Azure resource and access
+  > equivalent of a user with Owner at subscription level
+- `Owner`: role that enables user to manage all Azure resources
+  > built on role-based access control (RBAC), which is considered a newer AUTHZ system
+- `Entra Global Administrator`: role that enables users to assign administrator roles to users
+  > automatically assigned to whoever creates the Entra tenant
+- `Security Administrator`: role that enables user to manage security-related features, permissions, and compliance in M365 Security Center
+- `Subscription`: concept in the billing model used to pay for Azure services
+- `Tenant`: dedicated, trusted instance of Entra ID; represents a single organization; manages users, apps, resources.
+- `Single tenant`: Azure tenants accessing services in a dedicated environment
+- `Multi-tenant`: Azure tenants accessing services in shared environment, across multiple organizations
+- `Entra directory`: includes the users, groups, apps of tenant; used to perform identity and access management functions for resources
+- `Custom domain`
+- `MSFT account (MSA)`: personal accounts providing access to MSFT products and/or services
 
 
 
