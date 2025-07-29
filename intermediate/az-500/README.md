@@ -42,14 +42,66 @@
   - advanced administration
     - dynamic groups
     - self-service group management
-    - MSFT Identitfy Manager
+    - MSFT Identity Manager
     - cloud write-back capabilities
 - `Entra ID P2`
   - risk-based conditional access
   - Privileged Identitiy Management (PIM)
   - Entra ID Protection for 
 - `Pay-As-You-Go`
+  - Business-to-Customer (B2C)
 
+### Features
+
+- Application Management: process of creating, configuring, managing, and monitoring apps in cloud
+  - when an application is registered in Entra tenant, users assigned to app can securely access it.
+  > Secure access through OAuth, OIDC, SAML
+  - Application types supported:
+    - singal-page apps (SPA)
+    - web apps
+    - web APIs
+    - Mobile and native apps
+    Service, daemon, script
+- Authentication
+  - SSPR
+  - MFA
+  - banned password list
+  - smart lockout
+- MSFT Identity Manager
+  - for devs to build apps leveraging SSO
+  - token calls for APIs and Graph
+- B2B
+  - management of guest users and external partners
+- B2C
+  - control how users sign-up, sign-in, manage their profile from apps
+- Conditional Access
+- Device Management
+  - manage how devices access data
+- Domain services
+  - join Azure VMs to domain without domain controller
+- Enterprise users
+  - manage licenses, app access, groups, roles
+- Hybrid identity
+  - provide single user identity for AUTHN and AUTHZ, with Entra Connect and Entra Connect Health
+- Identity governance
+  - MSFT Entra Governance
+  - access reviews
+- Identity protection
+  - vulnerability detection
+  - anomaly protection
+  - policies
+  - actionable steps to resolution
+- Managed Identities
+- PIM
+  - just-in-time (JIT) access
+  - just enough access
+- Monitoring and health
+- Workload identities
+  - give an identity to software workloads, such as:
+    - apps
+    - services
+    - scripts
+    - containers
 
 
 
