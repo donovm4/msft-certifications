@@ -170,11 +170,32 @@ Entra ID enables the granting of same-level access and permissions to groups of 
 ### B2B Collaboration
 
 The partner uses their own identity management system(s). Guest users can sign-in to your apps and services, with their own identities:
-- work
-- school
-- social 
+- MSFT Entra accounts
+  - work
+  - school
+- MSA (personal accounts)
+- social
+  - Facebook
+  - Google
+- SAML / WS-Fed IdP federation
 
 > B2B callaboration is enabled by default
+
+### `CONCEPT`: _External_ Tenant versus _Workforce_ Tenant Configuration
+
+#### External
+
+- exclusively for apps you want to publish to consumers or business customers
+- custom self-service registrations flows (sign-up, sign-in)
+- custom sign-in with Company branding settings
+- customer data collection during sign-up, user activity, engagement data
+
+#### Workforce
+
+- standard MSFT Entra tenant
+- contains employee, internal apps, organizatinal resources
+- internal users can collaborate with external users, leveraging B2B
+
 
 ## Multi-Factor Authentication (MFA)
 
