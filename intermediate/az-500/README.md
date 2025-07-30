@@ -196,6 +196,24 @@ The partner uses their own identity management system(s). Guest users can sign-i
 - contains employee, internal apps, organizatinal resources
 - internal users can collaborate with external users, leveraging B2B
 
+### B2B Direct Connect
+
+- create a two-way trust relationship with other MSFT Entra organizations
+  - enables Teams Connect shared channel features
+- use cross-tenant access settings to manage trust 
+
+### Azure Active Directory B2C (Azure AD B2C)
+
+- legacy solution for customer identity and access management (CIAM)
+- separate consumer-based directory/tenant, managed through Azure AD B2C service
+
+### MSFT Graph APIs
+
+- available for creatings and managing External ID features
+- Examples:
+  - cross-tenant access API enables developers to programmatically create B2B Collaboration and Direct Connect policies
+  - leverage the invitation manager API for building custom onboarding experiences for business guests
+
 
 ## Multi-Factor Authentication (MFA)
 
