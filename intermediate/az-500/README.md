@@ -72,6 +72,7 @@
   - token calls for APIs and Graph
 - B2B
   - management of guest users and external partners
+  - feature under Entra External ID
 - B2C
   - control how users sign-up, sign-in, manage their profile from apps
 - Conditional Access
@@ -103,21 +104,88 @@
     - scripts
     - containers
 
-## Users & Guests
+## Users
 
-### Internal
+A user can be an identity
 
-Interal members are most likely full-time users in the organization.  
-Internal guests are users with guest-level permissions.  
+### Types
 
-### External
+- Internal
+  - Interal members are most likely full-time users in the organization.  
+  - Internal guests are users with guest-level permissions.  
 
-External users are users that have external accounts but have member access... pretty common in multitenant organizations.  
-External guests are users autheniticate using external methods and have guest-level privileges.
+- External
+  - External users are users that have external accounts but have member access... pretty common in multitenant organizations.  
+  - External guests are users autheniticate using external methods and have guest-level privileges.
 
+> You need to add access permissions _for each separate_ app, resource, and service **after** creating a user
 
+## Groups
 
-## Terminology & Key Terms
+Entra ID enables the granting of same-level access and permissions to groups of users instead of just each individual users
+
+### Types
+
+- Security
+  - control members, groups, and computer access to shared resources
+- M365
+  - give members access to a shared mailbox
+  - potentially give users or service principals outside organization access to the group
+
+### Methods of assigning group membership
+
+- Assigned
+  - assign specific members
+- Dynamic User
+  - leverage conditions to add / remove users automatically
+- Dynamic Device
+  - leverage conditions to add / remove devices automatically
+
+> You need to add access permissions _for each separate_ app, resource, and service **after** creating a group
+
+### Adding access rights
+
+- Direct assignment
+  - directly assigning the user to a resource
+- Group assignment
+  - assigning group to the resource
+  - managed by _both_ resource owner and group owner
+- Rule-based assignment
+  - essentially dynamic group assignment based on conditions
+- External authorite assignment
+  - access comes from external source (SaaS or on-prem AD)
+  - resource owner assigns group to resource
+  - group membership managed by external source
+
+## External Identites
+
+- invite guest users into organization
+- simple process:
+  - invitation
+  - redemption
+- self-service sign-up
+- user type is typically set to `guest`
+-  principal name contains the `#EXT#` identifier
+
+### B2B Collaboration
+
+The partner uses their own identity management system(s). Guest users can sign-in to your apps and services, with their own identities:
+- work
+- school
+- social 
+
+> B2B callaboration is enabled by default
+
+## Multi-Factor Authentication (MFA)
+
+1. Something you have
+    - trusted devices
+2. Something you know
+    - passwords
+3. Something you are
+    - biometrics
+
+## Terminology
 
 - `Identity`: _anything_ that can get **authenticated**
 - `Account`: identity with data associated
