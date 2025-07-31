@@ -289,6 +289,7 @@ Data from Identity Protection can be export to other tools.
   - syncs passwords of on-prem AD with Entra ID
 - Pass-through AUTHN
   - password sync without federation environment requirements
+  - technically free feature
 - Federation
   - enables hybrid environment with management of on-prem Federation Services (AD FS)
 - Synchronization
@@ -321,6 +322,33 @@ Data from Identity Protection can be export to other tools.
 - light-weight provisioning agents bridge AD to Entra ID, configs maintained in cloud
   - multiple agents for high availability
 - support for groups up to 50,000 members by leveraging organizational units (OUs)
+
+## Authentication (AUTHN)
+
+Authentication is the foundation for cloud access.
+
+> CONTEXT: this is for organizations that leverage on-prem AD service
+
+### Options
+
+- Cloud Entra Password Hash Sync
+  - same username and password as on-prem
+  - no _additional_ infrastructure deployment required
+  - requires less effort of these three options
+- Cloud Entra Pass-through Sync
+  - password validation leveraging software agent running on on-prem servers
+    > RECOMMENDATION: leverage 3 agent deployments for high availability
+  - servers validate users on-prem (password AUTHN does not happen in cloud)
+- Federation
+  - Entra ID will leverage separate identity AUTHN system to validate password
+  - usually requires more effort to implement and maintain (versus cloud AUTHN)
+> RECOMMENDATION(S):
+> - leverage deployment of additional servers for Pass-through or Federation for HA / DR efforts
+> - leverage Password Hash Sync regardless of on-top of Pass-through or Federation in case of on-prem outages, and Entra ID protection and credential leak reports
+
+## Kerberos
+
+
 
 ## Multi-Factor Authentication (MFA)
 
