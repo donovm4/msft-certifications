@@ -278,6 +278,38 @@ Data from Identity Protection can be export to other tools.
 - stream data to Event Hubs
 - send to another SIEM solution
 
+## MSFT Entra Connect
+
+- On-prem MSFT app designed for hybrid identities.
+- common identity for accessing on-prem and cloud resources
+
+### Features
+
+- Password Hash Sync
+  - syncs passwords of on-prem AD with Entra ID
+- Pass-through AUTHN
+  - password sync without federation environment requirements
+- Federation
+  - enables hybrid environment with management of on-prem Federation Services (AD FS)
+- Synchronization
+- Health monitoring
+
+## MSFT Entra Connect Health
+
+- robust monitoring solution for on-prem identity infrastructure
+  - alerts
+    - failed sign-ins
+    - Extranet lockouts
+    - ADFS issues
+    - maintenance
+    - alerts through email
+  - performance monitoring
+  - usage analytics
+  - ease of use (single pane of glass)
+> Install agent on each on-prem identity server
+
+## MSFT Entra Cloud Sync
+
 ## Multi-Factor Authentication (MFA)
 
 1. Something you have
