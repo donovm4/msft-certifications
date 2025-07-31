@@ -254,7 +254,7 @@ There are both automatic and manual methods for remediation
 
 - Automatic rememdiation
   - Risk-based Condition Access policy examples:
-    - require strong authentication method
+    - require strong AUTHN method
     - MFA
     - perform secure password reset
 - Manual remediation
@@ -318,7 +318,7 @@ Data from Identity Protection can be export to other tools.
 ### Key Features
 
 - can be leveraged alongside Entra Connect Sync
-- assists with muilt-forrested, disconnect ADs syncing to Entra ID
+- assists with muilt-forested, disconnect ADs syncing to Entra ID
 - light-weight provisioning agents bridge AD to Entra ID, configs maintained in cloud
   - multiple agents for high availability
 - support for groups up to 50,000 members by leveraging organizational units (OUs)
@@ -348,6 +348,83 @@ Authentication is the foundation for cloud access.
 
 ## Kerberos
 
+- provides domain-based AUTHN
+- Windows Server OS implement Kerberos v5 AUTHN protocol and extensions for public key AUTHN.
+  - implemented as security support provider (SSP)
+  - accessed through Security Support Provider Interface (SSPI)
+- AD DS is required for Kerberos implementations within domain or forest.
+  - Kerberos Key Distribution Center (KDC) integrated on domain controller
+  - KDC uses domain's AD DS database
+
+### Benefits
+
+- delegated AUTHN
+  - services on Windows Server OS can impersonate client computer
+  - act on client's behalf
+  - authentication provided via Kerberos protocol and NTLM
+- single sign-on
+- interoperability
+- efficiency
+- mutual AUTHN
+
+## New Tech LAN Mananger (NTLM)
+
+Family of AUTHN protocols
+
+NTLM protocols authenticate users and devices using challenge/response method to prove user AUTHN with server/domain
+  - domain AUTHN service of domain of the account
+  - look up account if in local database
+
+> `LAN` = Local Area Network
+
+## Password-less AUTHN
+
+### Windows Hello for Business
+
+  - Biometric or PIN
+  - Cloud AP provider
+    - requests nonce
+    - provides signed nonce
+    - decrypts session key and using TPM
+    - sends successfull AUTHN message
+  - MSFT Entra ID 
+    - sends nonce
+    - validates signed nonce 
+    - provides primary refresh token (PRT), session key
+  - Windows 1809 or later
+
+### Microsoft Authenticator
+
+  - app turns iOS or Andriod phone into passwordless credential
+  - push notifications
+  - app calls Entra ID
+  - challenge presented to user authenticating
+
+### Passkeys FIDO2 (Fast IDentity Online 2)
+
+- unphishable standards-based passwordless AUTHN method
+- users sign-in to resources with either:
+  - external security key
+    - USB
+    - Bluetooth
+    - NFC
+  - platform key built into device
+- Windows 1903 or later
+
+#### Key Distribution
+
+- central key provisioning processes
+- allow users to purchase FIDO 2.0-compatible keys
+
+#### Key Activation
+
+- self-active security keys
+- users register keys
+  - enable second factor after first use
+
+### Certificate-based authentication (CBA)
+
+- AUTHN directly with X.509 certificates against Microsoft Entra ID
 
 
 ## Multi-Factor Authentication (MFA)
