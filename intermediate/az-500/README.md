@@ -1,6 +1,6 @@
 # AZ-500: Azure Security Engineer Associate
 
-> Learning Path - AZ-500: Secure Identity and Access
+> Learning Path - [AZ-500: Secure Identity and Access](https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification&source=learn)
 
 ## Microsoft Entra ID
 
@@ -214,6 +214,69 @@ The partner uses their own identity management system(s). Guest users can sign-i
   - cross-tenant access API enables developers to programmatically create B2B Collaboration and Direct Connect policies
   - leverage the invitation manager API for building custom onboarding experiences for business guests
 
+## MSFT Entra Identity Protection
+
+- helps organizations...
+  - detect
+  - investigate
+  - remediate
+
+### Detect
+
+- during each sign-in, real-time detections run and generate session risk level
+  - rish level determines the policies applied to protect user / organization
+- there is a catalog of tections to protect organizations
+  - based on trillions of signals from AD, MSAs, Xbox
+    - Anonymous IP usage
+    - Brute-force / password spray attacks
+    - credential leaks
+
+### Investigate
+
+There are 3 key reports for administrators:
+
+1. Risk detections  
+    - each risk detected
+    - only available with Entra ID P2
+2. Risky sign-ins
+    - one or more risk detections reported on sign-in
+    > Limited info with Medium + High only, by default  
+    > Full access with Entra ID P2
+3. Risky users  
+    - the use has on or more Risky sign-in associated
+    - one or more risk detections have been reported
+    > Limited info with Medium + High only, by default  
+    > Full access with Entra ID P2
+
+### Remediate
+
+There are both automatic and manual methods for remediation
+
+- Automatic rememdiation
+  - Risk-based Condition Access policy examples:
+    - require strong authentication method
+    - MFA
+    - perform secure password reset
+- Manual remediation
+  - leveraged when user remediation isn't enabled
+  - administrator manually reviews reports
+    - in portal
+    - through API
+    - in M365 Defender (is this the equivalent to XDR?)
+  - administrators can perform manual actions:
+    - dismiss
+    - confirm user safety
+    - confirm compromise of risk(s)
+
+### Using the Data
+
+Data from Identity Protection can be export to other tools.
+
+- integrate with MSFT Sentinel
+- send to Log Analytics Workspaces
+- archive data in storage account
+- stream data to Event Hubs
+- send to another SIEM solution
 
 ## Multi-Factor Authentication (MFA)
 
