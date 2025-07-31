@@ -310,6 +310,18 @@ Data from Identity Protection can be export to other tools.
 
 ## MSFT Entra Cloud Sync
 
+- enables synchronization of users, groups, contacts to Entra ID
+- uses Entra cloud provisioning agent
+- orchestrated in MSFT Online Services
+
+### Key Features
+
+- can be leveraged alongside Entra Connect Sync
+- assists with muilt-forrested, disconnect ADs syncing to Entra ID
+- light-weight provisioning agents bridge AD to Entra ID, configs maintained in cloud
+  - multiple agents for high availability
+- support for groups up to 50,000 members by leveraging organizational units (OUs)
+
 ## Multi-Factor Authentication (MFA)
 
 1. Something you have
