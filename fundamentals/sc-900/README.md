@@ -142,8 +142,14 @@ When the password is being validated, the hash is generated and compared to what
 
 ## GRC
 
+Integration of GRC concepts together provides:
+- holistic oversight
+- proactive risk management
+- operational efficiency
+- data-driven decision making
+
 - Governance
-  - what are the rules and practices that an organizations use in their organizational processes?
+  - what are the **rules** and **practices** that an organizations use in their organizational **processes**?
 
 - Risk
   - threats that can impact the organization
@@ -152,6 +158,9 @@ When the password is being validated, the hash is generated and compared to what
 
 - Compliance
   - what rules do the organization need to adhere to?
+    - laws
+    - regulations
+    - policies
 
 ## Authentication
 
