@@ -27,6 +27,8 @@
 ### Identity Provider (IdP)
 
 Entra ID Tenant:
+- cloud-based identity and access management service
+- ensures user identities are securely managed and can access resources properly
 - Azure
 - M365
 - Users
@@ -533,6 +535,9 @@ Solutions for:
 Various solutions available
 
 - Governance
+  - classify and label sensitive data
+  - enforce policies
+  - access visibility
 - Compliance
   - Compliance Manager
     - compliance score
@@ -543,6 +548,7 @@ Various solutions available
     - regulations
     - policies
     - alerts
+    - integrates with Azure and M365
 - Data security
   - Data Lifecycle Management
     1. Know the Data
