@@ -7,6 +7,7 @@
 > previously Azure AD
 
 - cloud-based identity and access management service
+- ensures user identities are securely managed and can access resources properly
 - can be used to access internal resources
 - can be used to access external resources:
   - M365

@@ -1,14 +1,8 @@
-# SC-900
+# SC-900: Security, Compliance & Identity Fundamentals
 
-## Official Certification Doc
+## Official Certification Docx
 
 - [Overview](https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification&WT.mc_id=certposter_poster_wwl)
-
-## Fundamental Concepts
-
-- Security
-- Compliance
-- Identity
 
 ## What is Data?
 
@@ -59,7 +53,7 @@ When it comes to cloud-based services, implementing security and complain is sha
 - SaaS
   - The customer only responsible about the data supplied, the physical devices used to access SaaS software, user accounts and identities.
 
-## Defense in depth
+## Defense-in-depth
 
 You **do not** want to rely on only one method of defense. You do want layers of protection, as the data is the most important item here.
 
@@ -381,6 +375,11 @@ Something you write and read
 
 ### MSFT Defender for Cloud
 
+- secures multi-cloud environments
+- identifies vulnerabilities and misconfigurations in cloud
+- continuous monitoring for workloads
+- compliance evaluations against regulatory standards
+
 #### CNAPP - Cloud Native App Protection Platform
 
 ##### CSPM - Cloud Security Posture Management
@@ -406,6 +405,12 @@ The goal here is to implement security practices earlier in the development pipe
 - Azure DevOps
 
 ### MSFT Sentinel
+
+- cloud-native SIEM and SOAR platform
+- collects and analyzes security data
+- real-time threat detection
+- automated incident response
+- customizable dashboards
 
 #### SIEM - Security Incident and Event Management
 
@@ -439,12 +444,48 @@ Integration / Embedded:
 
 > Integrated with Sentinel portal
 
+- Continuous monitoring and analysis of security signals across:
+  - endpoints
+  - email
+  - identities
+  - cloud apps
+
+- Leverages various security concepts:
+  - Zero trust
+  - Least privilege
+  - Assume breach
+
 Solutions for:
 
 - Office 365
+  - protect emails from phishing and malware
+    - can scan links within communications (Safe Links & Safe Attachments)
+  - protects collaboration tools
+    - SharePoint
+    - Exchange
+    - Teams
+  - AI and ML generated insights
 - Defender for Endpoint
-- Cloud apps
-- Defender for Identity
+  - protects end devices
+    - Computers
+    - Phones
+  - real-time detection and protection
+    - endpoint detection and response (EDR)
+  - auto-threat remediation
+  - AI insights
+- Defender for Cloud Apps
+  - secure SaaS apps
+    - even third-party SaaS apps to enhance security
+  - provides discovery, monitoring, risk assessment
+  - DLP
+  - Conditional Access policies
+- Defender for Identity / Identity Protection
+  - defend on-prem and hybrid identity environments
+  - detects threats:
+    - malware
+    - ransomeware
+    - phishing attempts
+  - leverages ML
 - vulnerability management
 - threat intelligence
 
@@ -505,7 +546,7 @@ Various solutions available
         - watermarks
         - encryption 
     3. Prevent Loss
-        - DLP - digital loss protection
+        - DLP - data / digital loss protection
     4. Govern the Data
         - Policies
           - Retention
@@ -544,3 +585,14 @@ Tiers:
   - GUI access
   - API access
 
+## Password Hash Sync
+
+- securely syncs password hashes of on-prem AD --> Entra ID 
+- leverages through Entra Connect installed on on-prem AD
+- benefits:
+  - single sign-on (SSO)
+  - hashes stored instead of plaintext passwords
+  - prerequisite for self-service password reset (SSPR)
+  - faster AUTHN since AUTHN happens in cloud
+- ideal for hybrid environments
+- Password Writeback if you want to sync cloud changes --> on-prem
