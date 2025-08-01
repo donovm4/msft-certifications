@@ -60,12 +60,12 @@ When it comes to cloud-based services, implementing security and complain is sha
 You **do not** want to rely on only one method of defense. You do want layers of protection, as the data is the most important item here.
 
 - Physical Security (of the datacenter)
-- Identity
-- Perimeter on the network (something like DDos prevention)
-- Network (subnet, segmenting, traffic limitations)
-- Compute (antimalware, firewalls, patches)
-- Application (vulnerability testing)
-- Data (encryption)
+- Identity & Access
+- Perimeter on the network (something like DDos prevention, Azure Firewall)
+- Network (subnet, segmenting, traffic limitations w/ NSG)
+- Compute (antimalware, firewalls, patches, containerization)
+- Application (vulnerability testing, app registrations)
+- Data (encryption w/ something like Azure Key Vault)
 
 > You do not want to be so secure that you cannot continue business processes
 
@@ -83,21 +83,33 @@ Availability
 ## Zero Trust
 
 - verify explicitly / constantly
+  - _every_ request must be verified / validated
+  - continuous verification / AUTHN through session, not just at start
 - least privelege
-  - just enough access
-  - just-in-time access
+  - just enough access (JEA)
+  - just-in-time access (JIT)
 - assume breach
   - assume the attacker is already on the network
-  - focus on being able to spot that the network
+  - focus on being able to stop that the network
 
 ### Hierarchy of Zero Trust (when it comes to identities)
 
 - Identities
-  - Devices
-    - Applications
-    - Data
-  - Infrastructure
-  - Networks
+  - M365
+  - Entra ID
+- Devices
+  - Applications
+    - application access policies within M365 architecture
+  - Data
+    - classification and labeling
+    - encryption
+    - DLP
+- Infrastructure
+- Networks
+  - micro-segmentation
+  - network access controls
+- Analytics
+  - collect and analyze logs
 
 ## Encryption
 
@@ -497,6 +509,7 @@ Solutions for:
     - ransomeware
     - phishing attempts
   - leverages ML
+  - monitor user activity
 - vulnerability management
 - threat intelligence
 
@@ -611,3 +624,15 @@ Tiers:
   - faster AUTHN since AUTHN happens in cloud
 - ideal for hybrid environments
 - Password Writeback if you want to sync cloud changes --> on-prem
+
+## Shared Responsibility
+
+- CapEx
+  - up-front expenses
+- OpEx
+  - PAYG for services or products
+
+Cloud operations on a consumption-based model (OpEx).
+- no upfront costs for infrastructure
+- stop/start to resources
+- scalable resources
