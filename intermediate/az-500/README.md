@@ -460,6 +460,11 @@ NTLM protocols authenticate users and devices using challenge/response method to
 - `MSFT account (MSA)`: personal accounts providing access to MSFT products and/or services
 
 
+## MSFT Defender for Cloud
+
+- cloud-native app protection platform (CNAPP)
+- security measures and best practices
+- protect apps from cyber threats and vulnerabilities
 
 
 

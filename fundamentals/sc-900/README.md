@@ -4,6 +4,12 @@
 
 - [Overview](https://learn.microsoft.com/en-us/credentials/certifications/security-compliance-and-identity-fundamentals/?practice-assessment-type=certification&WT.mc_id=certposter_poster_wwl)
 
+## Fundamental Concepts
+
+- Security
+- Compliance
+- Identity
+
 ## What is Data?
 
 **Data** is any piece of information translated into binary digital format that can be moved ro processed.
