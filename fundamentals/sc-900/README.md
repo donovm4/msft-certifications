@@ -259,10 +259,15 @@ It is better to use multiple methods to prove the user is who they say they are.
 
 - Phishing-resistant
 - Proximity-based
-
-> Authenticator App  
-> Windows Hello for Business
-> FIDO
+- Products / methods:
+  - Authenticator App  
+  - Windows Hello for Business
+    - ensure passwords are not used
+    - leverage methods like: 
+      - PIN
+      - Facial recognition
+      - Fingerprint
+  - FIDO
 
 ### Self-service password reset
 
