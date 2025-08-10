@@ -92,7 +92,7 @@ Availability
   - assume the attacker is already on the network
   - focus on being able to stop that the network
 
-### Hierarchy of Zero Trust (when it comes to identities)
+### Hierarchy of Zero Trust
 
 - Identities
   - M365
@@ -113,9 +113,9 @@ Availability
 
 ## Encryption
 
-**Data Encryption** is the process of turning data into ciphertext that *should* be unreadable to unauthorized parties.
+- **Data Encryption** is the process of turning data into ciphertext that *should* be unreadable to unauthorized parties.
 
-**Keys** are some data used as part of cryptographic operation to encrypt and decrypt.
+- **Keys** are some data used as part of cryptographic operation to encrypt and decrypt.
 
 ### Symmetric
 
@@ -178,11 +178,20 @@ Integration of GRC concepts together provides:
 
 ## Authentication
 
-### Active Directory Domain Services
+- the process of verifying a subject's identity
+- traditionally means checking crednetials based on what may be stored in a system
+
+### MSFT Entra Domain Services
+
+- provides managed domain services without the need to manage domain servers
+- requires the syncing on on-prem AD to Entra ID
 
 Authentication for on-prem: 
 - Kerberos
 - NTLM
+- domain join
+- group policy
+- LDAP
 
 ### Hybrid identities
 
@@ -581,6 +590,11 @@ Various solutions available
           - Deletion
           - Labels
         - Records management
+  - Information Protection as one of tools that assists with:
+    - classifying
+    - labeling
+    - protect
+    - compliance with privacy regulations
 
 #### Content Search
 

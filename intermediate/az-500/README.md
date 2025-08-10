@@ -6,7 +6,8 @@
 
 > previously Azure AD
 
-- cloud-based identity and access management service
+- cloud-based identity and access management (IAM) service 
+  > also network access mananagement
 - ensures user identities are securely managed and can access resources properly
 - can be used to access internal resources
 - can be used to access external resources:
@@ -178,7 +179,11 @@ The partner uses their own identity management system(s). Guest users can sign-i
 - social
   - Facebook
   - Google
-- SAML / WS-Fed IdP federation
+- SAML / WS-Fed IdP federation protocols
+  - protocols by which AUTHN data is transfered between two _parties_
+  > - Security Assertion Markup Language (SAML)
+  > - Web Services Federation (WS-Fed)
+
 
 > B2B callaboration is enabled by default
 
