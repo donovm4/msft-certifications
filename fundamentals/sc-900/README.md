@@ -111,6 +111,17 @@ Availability
 - Analytics
   - collect and analyze logs
 
+## Entra ID versus Active Directory (AD)
+
+|  | Entra | AD |  
+| --- | --- | --- |
+| **Features** | --- | --- |
+| Deployment Model: | on-prem | cloud-based |
+| Scalability: | on-prem environments, users, groups | cloud an hybrid environments, users, groups, apps, devices |
+| AUTHN | Kerberos | SAML, WS-Fed, OIDC |
+| Access Control: | ACLs | Conditional Access, RBAC |
+| Use case(s) | on-prem resource management, legacy app AUTHN | Cloud app access, SSO, MFA, Conditonal Access, B2B |
+
 ## Encryption
 
 - **Data Encryption** is the process of turning data into ciphertext that *should* be unreadable to unauthorized parties.
@@ -203,6 +214,9 @@ Examples:
 
 ### Federation
 
+- leverages SAML and WS-Federation to enable / establish trust between IDPs and Service providers.
+- users AUTHN using existing credentials across organizations
+
 Let's say we have two tenants:
 - `Tenant_A`
   - `resource1`
@@ -212,6 +226,16 @@ Let's say we have two tenants:
 `User1` lives in `Tenant_B` but wants to access `resource1` which lives in `Tenant_A`.
 
 **Federated trust** is when `Tenant_A` trusts `Tenant_B` to run through authentication processes, which will then allow `User1` to access `Tenant_A` 'from' `Tenant_B`.
+
+Benefits:
+- Centralized management in hybrid environments
+- Enhanced security
+  - Smart Cards
+  - Biometrics
+- Compliance
+- Flexibilty
+  - supports various IDPs
+
 
 ### Types of accounts
 
@@ -274,6 +298,12 @@ It is better to use multiple methods to prove the user is who they say they are.
 - lockout thresholds
 - nummber of methods needed to complete reset
 - security questions
+- authentication methods:
+  - mobile app notification
+  - mobile app code
+  - email
+  - office phone
+  - security questions
 
 ## Authorization
 
@@ -300,6 +330,9 @@ User has already be *authenticated*, now we move onto **access**
 - can be self-serviced process
 
 ### Privilege Identity Management (PIM)
+
+- provide JIT access to Entra ID / resource roles 
+- users can request permissions as needed
 
 ### Identity protection
 - User Risk Level assessment
@@ -448,6 +481,7 @@ The goal here is to implement security practices earlier in the development pipe
 - real-time threat detection
 - automated incident response
 - customizable dashboards
+- leverages AI
 
 #### SIEM - Security Incident and Event Management
 
@@ -584,7 +618,7 @@ Various solutions available
           - Built-in
           - Custom
     2. Protect the Data
-        - Sensitivity labels
+        - Sensitivity labels (can encrypt the data)
         - watermarks
         - encryption 
     3. Prevent Loss
@@ -601,9 +635,9 @@ Various solutions available
     - protect
     - compliance with privacy regulations
 
-#### Content Search
+#### Content Search [_LEGACY_]
 
-#### eDiscovery (Standard)
+#### eDiscovery (Standard) [_LEGACY_]
 
 - case creation
 - legal holds

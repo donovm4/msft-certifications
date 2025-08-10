@@ -63,7 +63,8 @@
     - web apps
     - web APIs
     - Mobile and native apps
-    Service, daemon, script
+    - Service, daemon, script
+    > daemon - authenticates users and calls APIs without user interaction
 - Authentication
   - SSPR
   - MFA
@@ -185,7 +186,7 @@ The partner uses their own identity management system(s). Guest users can sign-i
   > - Web Services Federation (WS-Fed)
 
 
-> B2B callaboration is enabled by default
+> B2B collaboration is enabled by default
 
 ### `CONCEPT`: _External_ Tenant versus _Workforce_ Tenant Configuration
 
