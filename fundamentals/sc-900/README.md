@@ -491,11 +491,21 @@ The goal here is to implement security practices earlier in the development pipe
   - diagnostic settings
 - detect issues
 - investigate
+- visualizations 
 
 #### SOAR - Security Orchestration Automated Response
 
 - investigate
 - respond automatically
+
+#### Benefits
+
+- reduced complexity
+- centralized view from various data sources across enterprise
+- threat intelligent
+- proactive hunting
+- scalable
+- integration with 1st and 3rd-party solutions
 
 ### Security Copilot
 
