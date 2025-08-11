@@ -405,7 +405,7 @@ User has already be *authenticated*, now we move onto **access**
 
 #### Azure Bastion
 
-- securely connect to VMs in Azure **WITHOUT** public ip
+- securely connect to VMs in Azure **WITHOUT** public ip (securely over private network)
 - working around to prevent port-scanning.
 - RDP
 - SSH
@@ -481,22 +481,67 @@ The goal here is to implement security practices earlier in the development pipe
 - real-time threat detection
 - automated incident response
 - customizable dashboards
-- leverages AI
+- advanced analytics, leveraging AI & ML
+- scalable and integratable
+
+#### Capabilities
+
+- build playbooks
+- advanced analytics, leveraging AI & ML
+- incident response
+- threat hunting
+- vulnerability scanning
+- security operations automation
+- integrate with...
+  - Defender for Endpoint
+  - Defender for Cloud
+  - third-party security tooling
+- Mitre ATT&CK integration
+
+#### Threat Hunting
+
+- specialized searches
+- proactively identify potential threats / malicious activities
+- NOT triggers by alerts
+- User-initiated
+
+Threat Hunting queries are usually written in KQL
+
+- search large amount of data
+- filter events
+- aggregate data
+
+##### Steps
+
+1. Hypothesize approach (identify the DRIVERS for investigation)
+2. Identify data sources
+3. Leverage MSFT / MITRE Attack frameworks
+4. Build queries
+5. Refine queries as needed
 
 #### SIEM - Security Incident and Event Management
+
+> SIM - security information management, collection
+> SEM - security event management, analysis
 
 - collect signals from various systems:
   - agents
   - logs
   - diagnostic settings
-- detect issues
+- detect threats / issues
 - investigate
-- visualizations 
+- visibilty / visualizations 
+
+> Log Analytics Workspaces are foundational for Sentinel functionality
 
 #### SOAR - Security Orchestration Automated Response
 
-- investigate
+- investigates (orchestrated processes to streamline investigations and responses)
 - respond automatically
+  - isolate malware-infected devices
+  - block bad traffic
+  - reset compromised accounts
+  - collection of forensic evidence
 
 #### Benefits
 
@@ -520,6 +565,10 @@ Integration / Embedded:
 - Intune
 - Defender
 - Purview
+
+### Intune
+
+- set rules and configurations for Bring-Your-Own-Device (BYOD) scenarios
 
 ### Defender XDR
 
@@ -699,3 +748,48 @@ Cloud operations on a consumption-based model (OpEx).
 - no upfront costs for infrastructure
 - stop/start to resources
 - scalable resources
+
+## Security and Cloud Adoption Framework (CAF)
+
+### Phase 1: Strategize the foundations
+
+- define security as a driver within business rationale
+- define clear security requirements
+  - regulatory requirements
+  - data protection standards
+  - governance controls
+  - determine risks / limits
+- define security strategies
+- engage in risk assessments
+
+### Phase 2: Planning Secure infrastructure
+
+- threat modeling
+- secure design
+  - network segmenting
+  - identity and access management
+  - data protections
+  - compliance
+- security controls
+  - proactive tooling
+  - reactive tooling
+
+### Phase 3: Building secure landing zones
+
+- implementation
+  - firewalls
+  - ecryption
+  - IAM
+- identify security baselines
+- deploy monitoring solutions
+
+### Phases 4, 5 & 6: Adopt, Govern, Manage
+
+- Secure migrations
+- secure operations
+- regularly review governance and compliance
+- continuous improvement
+
+
+
+
