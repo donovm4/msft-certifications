@@ -2,12 +2,17 @@
 
 > Learning Path - [AZ-500: Secure Identity and Access](https://learn.microsoft.com/en-us/credentials/certifications/azure-security-engineer/?practice-assessment-type=certification&source=learn)
 
+## Table of Contents
+
+- [Entra ID](#microsoft-entra-id)
+- [Entra External ID](#msft-entra-external-id)
+- [IAM](#identity-and-access-management)
+
 ## Microsoft Entra ID
 
 > previously Azure AD
 
-- cloud-based identity and access management (IAM) service 
-  > also network access mananagement
+- cloud-based identity and access management (IAM) and network access management service
 - ensures user identities are securely managed and can access resources properly
 - can be used to access internal resources
 - can be used to access external resources:
@@ -55,6 +60,7 @@
 
 ### Features
 
+- Identity Management
 - Application Management: process of creating, configuring, managing, and monitoring apps in cloud
   - when an application is registered in Entra tenant, users assigned to app can securely access it.
   > Secure access through OAuth, OIDC, SAML
@@ -88,7 +94,7 @@
 - Hybrid identity
   - provide single user identity for AUTHN and AUTHZ, with Entra Connect and Entra Connect Health
 - Identity governance
-  - MSFT Entra Governance
+  - MSFT Entra ID Governance
   - access reviews
 - Identity protection
   - vulnerability detection
@@ -107,11 +113,13 @@
     - scripts
     - containers
 
-## Users
+### Identity and Access Management
+
+#### Users
 
 A user can be an identity
 
-### Types
+##### Types
 
 - Internal
   - Interal members are most likely full-time users in the organization.  
@@ -123,11 +131,11 @@ A user can be an identity
 
 > You need to add access permissions _for each separate_ app, resource, and service **after** creating a user
 
-## Groups
+#### Groups
 
 Entra ID enables the granting of same-level access and permissions to groups of users instead of just each individual users
 
-### Types
+##### Types
 
 - Security
   - control members, groups, and computer access to shared resources
@@ -135,7 +143,7 @@ Entra ID enables the granting of same-level access and permissions to groups of 
   - give members access to a shared mailbox
   - potentially give users or service principals outside organization access to the group
 
-### Methods of assigning group membership
+##### Methods of assigning group membership
 
 - Assigned
   - assign specific members
@@ -146,7 +154,7 @@ Entra ID enables the granting of same-level access and permissions to groups of 
 
 > You need to add access permissions _for each separate_ app, resource, and service **after** creating a group
 
-### Adding access rights
+##### Adding access rights
 
 - Direct assignment
   - directly assigning the user to a resource
@@ -160,7 +168,7 @@ Entra ID enables the granting of same-level access and permissions to groups of 
   - resource owner assigns group to resource
   - group membership managed by external source
 
-## External Identites
+## MSFT Entra External ID
 
 - invite guest users into organization
 - simple process:
@@ -170,7 +178,7 @@ Entra ID enables the granting of same-level access and permissions to groups of 
 - user type is typically set to `guest`
 -  principal name contains the `#EXT#` identifier
 
-### B2B Collaboration
+### B2B Collaboration / External Identites
 
 The partner uses their own identity management system(s). Guest users can sign-in to your apps and services, with their own identities:
 - MSFT Entra accounts
@@ -302,6 +310,23 @@ Data from Identity Protection can be export to other tools.
 - Synchronization
 - Health monitoring
 
+## MSFT Entra Application Proxy
+
+> Application proxy connector tool
+
+- provides secure remote access to on-premises web apps
+- SSO
+- users access cloud and on-premises app through:
+  - external URL
+  - internal app portal
+
+## Entra Verified ID
+
+`decentralized identities`: concept of individuals being in control of managing their data without relying on centralized authorities or intermediaries
+
+- establish a **unique** and **decentralized** identity for each individual user
+- secure management across platform and services
+
 ## MSFT Entra Connect Health
 
 - robust monitoring solution for on-prem identity infrastructure
@@ -325,7 +350,7 @@ Data from Identity Protection can be export to other tools.
 ### Key Features
 
 - can be leveraged alongside Entra Connect Sync
-- assists with muilt-forested, disconnect ADs syncing to Entra ID
+- assists with multi-forested, disconnect ADs syncing to Entra ID
 - light-weight provisioning agents bridge AD to Entra ID, configs maintained in cloud
   - multiple agents for high availability
 - support for groups up to 50,000 members by leveraging organizational units (OUs)
@@ -393,7 +418,7 @@ NTLM protocols authenticate users and devices using challenge/response method to
     - requests nonce
     - provides signed nonce
     - decrypts session key and using TPM
-    - sends successfull AUTHN message
+    - sends successful AUTHN message
   - MSFT Entra ID 
     - sends nonce
     - validates signed nonce 
@@ -402,14 +427,14 @@ NTLM protocols authenticate users and devices using challenge/response method to
 
 ### Microsoft Authenticator
 
-  - app turns iOS or Andriod phone into passwordless credential
+  - app turns iOS or Android phone into **password-less** credential
   - push notifications
   - app calls Entra ID
   - challenge presented to user authenticating
 
 ### Passkeys FIDO2 (Fast IDentity Online 2)
 
-- unphishable standards-based passwordless AUTHN method
+- unphishable standards-based password-less AUTHN method
 - users sign-in to resources with either:
   - external security key
     - USB
@@ -446,7 +471,7 @@ NTLM protocols authenticate users and devices using challenge/response method to
 ## Terminology
 
 - `Identity`: _anything_ that can get **authenticated**
-- `Account`: identity with data associated
+- `Account`: identity with data associated to it
 - `Entra account`: identity created through Entra ID
   > Sometimes can be a Work or School account.
 - `Account Administrator`: role that enables user to manage all subscriptions in an account
@@ -473,7 +498,13 @@ NTLM protocols authenticate users and devices using challenge/response method to
 - security measures and best practices
 - protect apps from cyber threats and vulnerabilities
 
+## MSFT Defender for Identity
 
+## Conditional Access
+
+## Permissions
+
+- Contributor: full access to manage a resource _except_ permission modification
 
 ## MSFT Cloud Security Benchmark
 ### Identity management and privileged access
@@ -481,7 +512,6 @@ NTLM protocols authenticate users and devices using challenge/response method to
 Some of the identity and access management systems include:
 - single sign-on (SSO)
 - strong AUTHN
-- managed identities
-  - also service principals
+- managed identities, service principals
 - conditional access
 - anomaly detection and monitoring

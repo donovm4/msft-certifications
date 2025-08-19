@@ -370,7 +370,12 @@ User has already be *authenticated*, now we move onto **access**
 
 #### Azure Firewall
 
-- works within the virtual network
+- stateful inbound and outbound traffic (context-aware)
+- built-in scalability and reliability
+- integrated threat intelligence
+- centralized network policy
+- detailed logging
+- works within virtual networks, LAWs, Defender for Cloud
 - works on layers 4 and 7
 
 #### Azure Web Application Friewall (WAF)
@@ -385,14 +390,16 @@ User has already be *authenticated*, now we move onto **access**
 
 #### Network Security Group (NSGs)
 
-- Source Port
-- Source IP
-- Destination Port
-- Destination IP
-- Protocol
-- Rules:
+1. Source Port
+2. Source IP
+3. Destination Port
+4. Destination IP
+5. Protocol
+6. Rules:
   - Allow
   - Deny
+
+> Lower the number, higher the priority
 
 #### Azure Virtual Network Manager
 
@@ -406,13 +413,21 @@ User has already be *authenticated*, now we move onto **access**
 #### Azure Bastion
 
 - securely connect to VMs in Azure **WITHOUT** public ip (securely over private network)
-- working around to prevent port-scanning.
-- RDP
-- SSH
+- work around to prevent port-scanning
+- Protocols
+  - RDP
+  - SSH
 - SKUs:  
   - Basic
+    - Windows - RDP only
+    - Linux - SSH only
   - Standard
+    - Windows - RDP, SSH
+    - Linux - RDP, SSH
   - Premium
+    - session recording
+- Purge protections
+- separate vaults per application / environment
 
 #### Azure Key Vault
 
@@ -430,10 +445,12 @@ Something you write and read
 - cannot be exported from Key Vault
 - run cryptographic operations
 
+> Hardware-protected with Premium tier
+
 ##### Certifications
 
 - lifecycle management on certificates
-- TLS certificates for example
+- TLS/SSL certificates for example
 - Tiers:
   - Standard
     - software-protected keys
@@ -481,7 +498,7 @@ The goal here is to implement security practices earlier in the development pipe
 - real-time threat detection
 - automated incident response
 - customizable dashboards
-- advanced analytics, leveraging AI & ML
+- advanced analytics, leveraging AI & ML, analytics rules to trigger events when definded patterns are met
 - scalable and integratable
 
 #### Capabilities
@@ -499,6 +516,12 @@ The goal here is to implement security practices earlier in the development pipe
 - Mitre ATT&CK integration
 
 #### Threat Hunting
+
+> Prerequisites:  
+> - Security Reader / Admin
+> - Reader
+> - Contributor
+> - Owner
 
 - specialized searches
 - proactively identify potential threats / malicious activities
@@ -572,18 +595,34 @@ Integration / Embedded:
 
 ### Defender XDR
 
-> Integrated with Sentinel portal
+> XDR = Extended Detection and Response
+> Integrated with Sentinel via M365 Defender Connector
 
 - Continuous monitoring and analysis of security signals across:
   - endpoints
+    - devices (laptops, desktops, servers)
   - email
   - identities
   - cloud apps
-
+  > holistic view / single pane of glass for EDR
 - Leverages various security concepts:
   - Zero trust
   - Least privilege
   - Assume breach
+  - Advanced analytics
+  - Anomaly detection
+  - Proactive hunting
+- Automated Response
+  - Alert prioritization
+  - Event triggers
+- Combines related incidents for efficiency and visibility
+
+Best Practices:
+1. define clear goals
+2. consolidate data
+3. leverage threat detection
+4. tune and refine detection rules and response actions
+5. empower teams
 
 Solutions for:
 
@@ -596,13 +635,17 @@ Solutions for:
     - Teams
   - AI and ML generated insights
 - Defender for Endpoint
-  - protects end devices
+  - protects end devices (EDR)
     - Computers
     - Phones
   - real-time detection and protection
+    - vulnerability management
     - endpoint detection and response (EDR)
-  - auto-threat remediation
+    - advanced hunting
+    - files that are accessed
+  - auto-threat remediation (attack surface reduction - ASR)
   - AI insights
+  - Antivirus
 - Defender for Cloud Apps
   - secure SaaS apps
     - even third-party SaaS apps to enhance security
@@ -624,9 +667,9 @@ Solutions for:
 
 6 Key Principles:
 
-- Control
-- Transparency
-- Security
+- **Control**
+- **Transparency**
+- **Security**
 - Strong legal protections
 - No content-based targeting
 - Benefit the customer
@@ -634,9 +677,9 @@ Solutions for:
 ### Service Trust Portal
 
 - certifications
-- references
+- security and compliance documentation, references and guides
 - standards used
-- reports
+- audit reports
 - industry details
 - regional details
 
@@ -665,9 +708,13 @@ Various solutions available
     - MSFT responsibilities
     - improvement actions
     - assessments
-    - regulations
+    - regulations and templates
+      - GDPR
+      - ISO27001
+      - HIPAA
     - policies
     - alerts
+    - auditing
     - integrates with Azure and M365
 - Data security
   - Data Lifecycle Management
@@ -676,12 +723,15 @@ Various solutions available
         - Classify the Data (trainable classifiers, sensitive types, EDM)
           - Built-in
           - Custom
+        - Content Inspection
     2. Protect the Data
         - Sensitivity labels (can encrypt the data)
         - watermarks
         - encryption 
     3. Prevent Loss
         - DLP - data / digital loss protection
+        - limit sensitive data exposure
+        - labels can trigger events
     4. Govern the Data
         - Policies
           - Retention
@@ -689,12 +739,29 @@ Various solutions available
           - Labels
         - Records management
   - Information Protection as one of tools that assists with:
-    - classifying
-    - labeling
-    - protect
+    - classifying (even with automation)
+    - labeling (even with automation)
+    - protect (even with automation)
     - compliance with privacy regulations
+    - simplified audits
 
-#### Content Search [_LEGACY_]
+> Integrate with SharePoint, OneDrive, Exchange, Teams
+
+#### Content Search [_LEGACY_] / Content Explorer (?)
+
+- provides centralized view
+- search content across multiple data surfaces
+- apply data labels
+- identify high-risk
+
+#### Activity Explorer
+
+- monitor user activity across data
+  - who accessed it
+  - when was it accessed
+  - how it was used
+- generate reports
+- supports compliance audits
 
 #### eDiscovery (Standard) [_LEGACY_]
 
@@ -704,6 +771,27 @@ Various solutions available
 #### eDiscovery (Premium)
 
 - complete e2e workflow
+- search and retrieve content for...
+  - investigation
+  - legal reviews
+
+### DDoS PRotection
+
+- protects against wide range of DDoS attack methods
+- Layers 3 and 4 mitigation
+- leverages MSFT global network
+- always-on traffic monitoring
+
+Tiers: 
+- IP
+  - protects standard public IPs
+  - pricing per protected IP
+- Network
+  - protects basic and standard IPs
+  - DDos rapid response
+  - Cost protection
+  - WAF discount
+  - pricing per 100 protected IPs
 
 ## Audit
 
@@ -751,7 +839,7 @@ Cloud operations on a consumption-based model (OpEx).
 
 ## Security and Cloud Adoption Framework (CAF)
 
-### Phase 1: Strategize the foundations
+### Phase 1: [STRATEGY] Strategize the foundations
 
 - define security as a driver within business rationale
 - define clear security requirements
@@ -762,7 +850,7 @@ Cloud operations on a consumption-based model (OpEx).
 - define security strategies
 - engage in risk assessments
 
-### Phase 2: Planning Secure infrastructure
+### Phase 2: [PLAN] Planning Secure infrastructure
 
 - threat modeling
 - secure design
@@ -774,7 +862,7 @@ Cloud operations on a consumption-based model (OpEx).
   - proactive tooling
   - reactive tooling
 
-### Phase 3: Building secure landing zones
+### Phase 3: [READY ?]Building secure landing zones
 
 - implementation
   - firewalls
