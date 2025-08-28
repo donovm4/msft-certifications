@@ -65,7 +65,7 @@
   - when an application is registered in Entra tenant, users assigned to app can securely access it.
   > Secure access through OAuth, OIDC, SAML
   - Application types supported:
-    - singal-page apps (SPA)
+    - single-page apps (SPA)
     - web apps
     - web APIs
     - Mobile and native apps
@@ -126,8 +126,8 @@ A user can be an identity
   - Internal guests are users with guest-level permissions.  
 
 - External
-  - External users are users that have external accounts but have member access... pretty common in multitenant organizations.  
-  - External guests are users autheniticate using external methods and have guest-level privileges.
+  - External users are users that have external accounts but have member access... pretty common in multi-tenant organizations.  
+  - External guests are users authenticate using external methods and have guest-level privileges.
 
 > You need to add access permissions _for each separate_ app, resource, and service **after** creating a user
 
@@ -163,7 +163,7 @@ Entra ID enables the granting of same-level access and permissions to groups of 
   - managed by _both_ resource owner and group owner
 - Rule-based assignment
   - essentially dynamic group assignment based on conditions
-- External authorite assignment
+- External authority assignment
   - access comes from external source (SaaS or on-prem AD)
   - resource owner assigns group to resource
   - group membership managed by external source
@@ -208,7 +208,7 @@ The partner uses their own identity management system(s). Guest users can sign-i
 #### Workforce
 
 - standard MSFT Entra tenant
-- contains employee, internal apps, organizatinal resources
+- contains employee, internal apps, organizational resources
 - internal users can collaborate with external users, leveraging B2B
 
 ### B2B Direct Connect
@@ -511,6 +511,8 @@ NTLM protocols authenticate users and devices using challenge/response method to
 - security operations automation
 - integrate with...
   - Defender for Endpoint
+    - for _protection_...
+    > BUT in order to be **managed** by Endpoint, target machines need to be onboarded with Azure Arc
   - Defender for Cloud
   - third-party security tooling
 - MITRE ATT&CK framework integration
@@ -605,6 +607,49 @@ Threat Hunting queries are usually written in KQL
 - security measures and best practices
 - protect apps from cyber threats and vulnerabilities
 
+### CSPM Plans
+
+- Foundational
+  - recommendations
+  - inventory
+  - Secure score
+  - visualizations and reports
+  - data exports
+  - automated workflows
+  - MSFT Cloud Security Benchmark
+- Defender CSPM
+  - regulatory assessments
+  - internet exposure analysis
+  - agentless container vulnerability assessments
+  - custom recommendations
+
+### Defender for Servers
+
+- protect cloud and on-premises machines
+  - Linux
+  - Windows
+- Plan 1
+  - EDR features
+  - vulnerability assessment
+  - compliance assessment
+  - enabled / disabled at resource or subscription level
+- Plan 2
+  - EDR
+  - Agentless malware scanning
+  - vulnerability / compliance / OS assessments
+  - file integrity
+  - network mapping
+  - enabled at subscription level
+  - cannot be enabled at resource level
+
+### Defender for Containers
+
+### Defender for ARM
+
+### Defender for App Service
+
+### Defender for SQL
+
 ## MSFT Defender for Identity
 
 - leverages on-prem and cloud-based identities
@@ -628,6 +673,72 @@ Some of the identity and access management systems include:
 - conditional access
 - anomaly detection and monitoring
 
+
+
+## Azure Firewall Manager
+
+Centralized security policy and route management
+
+Secured Virtual Hub / Virtual WAN Hub (VWAN)
+- managed resource to create hub-spoke topologies
+- integrate with security and routing policies
+- VNet-to-Internet (V2I)
+
+Hub VNet
+- standard Azure VNet
+- leverage security policies from Azure Firewall
+
+Assign DDoS protection plans
+Configure Azure Firewall policies from Azure Firewall Manager
+
+### Azure Firewall
+
+Cloud-nate firewall security service
+
+SKUs:
+  - Basic
+  - Standard (L3-L7 filtering)
+  - Premium
+
+### Web Application Firewall
+
+Centralized protection of web apps (application code) from common exploits and vulnerabilities
+- SQL injection
+- XSS
+- DDoS
+
+> Azure Front Door is global  
+> Region WAF
+
+### DDoS Protection
+
+**Distributed denial of service** (DDoS) attacks try to exhaust application resources making it unavailable to actual users.
+
+- protects at L3 and L4
+- automatic adaptive-tuning to protect resources
+- requires no application or resource changes
+- analytics
+- metrics
+- alerts
+
+- Tiers: 
+  - Network protection
+  - IP protection
+
+## Azure Front Door
+
+Routes clients to fastest and most available app backend
+- L7 / Http / Https
+- Internet-facing application backend can be hosted inside / outside Azure
+
+Features:
+- URL-based routing
+- Priority-based routing
+- multi-site hosting
+- Session affinity
+- SSL termination
+- leverage WAF
+
 ## Azure Key Vault
 
 - securely storage and access secrets
@@ -647,3 +758,109 @@ Some of the identity and access management systems include:
     - Azure Disk Encryption
 - RBAC on the _control plane_ / management of KeyVault
 - Access policies on the _data plane_ / access and management of the data
+
+### Hardware Security Module (HSM)
+
+- meant for high-stakes security models
+- safeguard and manage crypto keys
+
+## Site-to-Site VPN
+
+Policy-based
+
+- static routing
+  - IP address rules 
+  - protocol rules
+- supports IPSec, IKEv1, S2S
+- NOT FLEXIBLE
+Route-based
+- dynamic (routes not policies)
+- supports IKEv2, BGP, P2S, S2S, VNet-to-VNet, Multi-site
+- VERY FLEXIBLE
+
+## Forced-Tunneling
+
+- redirect or "force" all Internet-bound traffic back to your on-premises location 
+- via S2S VPN tunnel 
+- useful for inspection and auditing
+
+## Examples
+
+### Configuring secure access to Azure Key Vault
+
+1. configure private link service
+2. then prevent public access to rely on private connection only
+3. lock down via IAM / access policies
+4. leverage Azure Policy
+5. Enable monitoring now that initial measures in place
+
+## App Service
+
+Internal Load Balancer App Service Environments
+- self-hosted runners for AzDevOps
+- SCM
+
+## Defender External Attack Surface Management (EASM)
+
+Maps digital attack paths
+
+- identify the unknowns
+  - IPs
+  - Domains
+  - email addresses / contacts
+  - hosts
+  - ASNs
+  - Whois orgs
+- prioritize risks
+- data residency of customer's choices
+- 30-day retention for IP addresses
+- data retention is 180 days + 75 days for non-customers
+
+## Azure Policy
+
+- `disabled` is best used for testing before / without implementing
+
+## NOTES
+
+- Enforcing traffic with Virtual WAN (VWAN) configuration == leverage forced tunneling
+
+## Encrypted ExpressRoute
+
+ExpressRoute **does not** support encryption natively
+Customer / Provider will have to provide encryption solution themselves
+  - typically a S2S VPN (IPSec encryption in-transit)  
+  - private peering between on-prem <--> Azure VNet over ExpressRoute circuit
+Prioritize IPSec-protected connections over ExpressRoute direct connections
+  - provide larger amount of addresses for IPSec VPN BGP Session > direct ExpressRoute path
+  - Advertise disjoint prefixes
+
+## MSFT Antimalware
+
+- MSFT Antivirus
+- Defender for Endpoint
+- extension for VMs
+> can be deployed using MSFT Defender for Cloud
+
+## Virtual Machine protection
+
+- Antimalware / Defender for Cloud services
+- Disk Encryption via Key Vault
+- Keys / Secrets stored in Key Vault
+- Azure Backup / restore points
+- Azure Site Recovery
+- Network Security Groups
+- Jump services
+- Azure Marketplace images
+- vulnerability inspection
+
+## Azure Blueprints
+
+Defines repeatable set of Azure resources
+- adhere to standards / patterns / requirements
+- declarative orchestrations
+
+## AKS
+
+Manage Container-based applications, deploy microservices
+- Stateful
+- Stateless
