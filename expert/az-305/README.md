@@ -71,16 +71,16 @@ Pillars:
 
 2. Subscriptions
 
-  - Logical unit that links Azure account / tenant to Azure resources and services.
+    - Logical unit that links Azure account / tenant to Azure resources and services.
 
-    - Enterprise Agreement (EA)
-    - Microsoft Customer Agreement (MCA)
-    - Pay-As-You-Go
-    - Dev/Test
-    - Student 
+      - Enterprise Agreement (EA)
+      - Microsoft Customer Agreement (MCA)
+      - Pay-As-You-Go
+      - Dev/Test
+      - Student 
 
 3. Resource Groups
-  - ...
+    - ...
 
 4. Resources
 
@@ -93,8 +93,15 @@ Pillars:
 ## Roles
 
 - MSFT Built-in roles
-
+  - Entra roles
+  - 
 - Custom roles
+
+Settings:
+  - Eligible
+    - User must be elevated to the role
+  - Active
+    - Role is always active (based on timeframe set)
 
 ## Role Assignments
 
@@ -256,3 +263,112 @@ Something you have.
 Structured environments designed to deploy and manage Azure resources on the foundations of CAF principles.
 - Platform: shared services such as identity, connectivity, and management
 - Application: dedicated subscriptions for applications / workloads
+
+## MSFT Purview
+
+Unified platform that provides solutions for data governance, compliance, security, and management.
+
+### MSFT Purview Data Loss Prevention (DLP)
+
+Create DLP policies that can help you identify, monitor, and auto protect sensitive data from being shared, accidentally or unauthorized...
+  - at rest
+  - in transit
+  - in use
+
+Targets:
+  - M365 services
+  - Office applic, macOS
+  - non-MSFT cloud apps
+  - on-prem
+  - Fabric, Power BI
+
+### MSFT Purview Data Security Investigations
+
+### MSFT Purview Data Security Posture Management
+
+### MSFT Purview Information Barriers
+
+### MSFT Purview Information Protection
+
+### MSFT Purview Insider Risk Management
+
+### MSFT Purview Privileged Access Management
+
+### MSFT Purview Data Map
+
+### MSFT Purview Unified Catalog
+
+### MSFT Purview Audit
+
+### MSFT Purview Communication Manager
+
+### MSFT Purview Compliance Manager
+
+### MSFT Purview Data Lifecycle Management
+
+### MSFT Purview eDiscovery
+
+## MSFT Priva
+
+## Structured data vs Unstructured data
+
+| --- | Structured data | Unstructured data |
+| --- | --------------- | ----------------- |
+| What? |  organized in predefined model | schema-less |
+| Examples | <ul><li>key-value pairs</li></ul> | <ul> <li>documents</li> <li>images</li> <li>videos</li> </ul> |
+
+## Data Encryption
+
+Security methods that turn data unreadable. It can only be decrypted by an authorized key
+
+Transparent Data Encryption (TDE)
+- encrypts entire database
+- only decrypted when authorized user requests access
+
+Column-level Encryption
+- encrypts specific columns of tables
+- useful for encrypting sensitive data stored
+
+Field-level Encryption
+- encrypts individual fields
+- application-level
+
+End-to-End Encryption (e2e)
+- data encryption n-transit
+
+Leverage Azure Key Vault for storing encryption keys _securely_
+
+## Azure Cosmos DB
+
+Fully managed, serverless NoSQL, relational, vector database, supporting unstructured _and_ semi-structured data **without** fixed schema
+- high performance
+- global distribution (lower latency)
+- scalability
+
+> 'NoSQL' = Not Only SQL; means that the database does not rely on traditional tabled-based relational model.
+
+> Look into asynchronous / synchronous operations
+
+## Azure SQL Database (PaaS)
+
+Fully managed, relational database built on MSFT-managed SQL Server, OS, hardware
+- scalability
+  - hyper-scale
+  - serverless
+- security
+  - encryption
+  - network isolation
+  - threat detection
+- performance
+  - AI / ML performance tuning
+- reliability
+
+## Azure SQL Managed Instance (PaaS)
+
+Fully managed SQL database, where MSFT manages the OS and hardware
+
+## SQL Server on Azure VMs (IaaS)
+
+Leverage SQL Server in Azure without managing on-premises hardware
+
+
