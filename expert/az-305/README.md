@@ -340,7 +340,7 @@ Leverage Azure Key Vault for storing encryption keys _securely_
 
 ## Azure Cosmos DB
 
-Fully managed, serverless NoSQL, relational, vector database, supporting unstructured _and_ semi-structured data **without** fixed schema
+Fully-managed, serverless NoSQL, relational, vector database, supporting unstructured _and_ semi-structured data **without** fixed schema
 - high performance
 - global distribution (lower latency)
 - scalability
@@ -351,7 +351,7 @@ Fully managed, serverless NoSQL, relational, vector database, supporting unstruc
 
 ## Azure SQL Database (PaaS)
 
-Fully managed, relational database built on MSFT-managed SQL Server, OS, hardware
+Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardware
 - scalability
   - hyper-scale
   - serverless
@@ -365,10 +365,138 @@ Fully managed, relational database built on MSFT-managed SQL Server, OS, hardwar
 
 ## Azure SQL Managed Instance (PaaS)
 
-Fully managed SQL database, where MSFT manages the OS and hardware
+Fully-managed SQL database, where MSFT manages the OS and hardware
 
 ## SQL Server on Azure VMs (IaaS)
 
 Leverage SQL Server in Azure without managing on-premises hardware
 
+## Azure Storage
 
+Managed, modern data storage solutions for a variety of scenarios, offering:
+- high availability
+- scalability
+- security
+- global accessibility (HTTP/S via REST API)
+
+### Redundancy / Replication
+
+- Locally-redundant Storage (LRS)
+
+- Zone-redundant Storage (ZRS)
+
+- Geo-redundant Storage (GRS)
+
+- Geo-zone Redundant Storage (GZRS)
+
+| Storage Service type | Redundancy supported |
+| -------------------- | -------------------- |
+| Blob                 | <ul><li>LRS</li><li>ZRS</li><li>(RA)-GRS</li><li>(RA)-GZRS</li></ul> |
+| File                 | <ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul> |
+| Queue                | <ul><li>LRS</li><li>ZRS</li><li>(RA)-GRS</li><li>(RA)-GZRS</li></ul> |
+| Table                | <ul><li>LRS</li><li>ZRS</li><li>(RA)-GRS</li><li>(RA)-GZRS</li></ul> |
+| Disk                 | <ul><li>LRS</li><li>ZRS</li></ul> |
+| Elastic SAN          | <ul><li>LRS</li><li>ZRS</li></ul> |
+
+| Storage Account type | Redundancy supported |
+| -------------------- | -------------------- |
+| GPv2                 | <ul><li>LRS</li><li>ZRS</li><li>(RA)-GRS</li><li>(RA)-GZRS</li></ul> |
+| Premium Block        | <ul><li>LRS</li><li>ZRS</li></ul> |
+| Premium Files        | <ul><li>LRS</li><li>ZRS</li></ul> |
+| Premium Page         | <ul><li>LRS</li></ul> |
+### Azure Blob / Data Lake Storage (ADLS)
+
+Unstructured data storage at massive scale
+- documents
+- images
+- videos
+- other binary data
+
+> Blob = Binary Large Objects
+
+Scenarios:
+- streaming
+- random access
+- big data analytics
+
+### Azure Files
+
+Fully-managed, mountable, cloud file shares
+- SMB 
+- NFS
+- Rest API
+
+### Azure Elastic SAN
+
+Cloud-based SAN configurations, leveraging:
+- deployment simplification
+- scalability
+- management capabilities
+- high availability
+
+Workloads:
+- VMs
+- AKS
+- MariaDB
+- SQL
+
+> Accessible via internet Small Computer Systems Interface (iSCSI)
+
+### Azure Queues
+
+Asynchronous message queueing for application components
+
+### Azure Tables
+
+Leverage cloud-based, semi-structured NoSQL data
+- key-value pairing
+- schemaless design
+
+### Azure Managed Disks
+
+Persistently store data on virtual hard disks
+- accessible
+- attachable
+
+### Azure Container Storage
+
+Volume management, deployment and orchestration integrable with Kubernetes
+
+### Azure NetApp Files (ANF)
+
+Fully-managed, enterprise-grade NAS
+- NFSv3, NFSv4.1
+- SMBv3.x
+
+Workloads:
+- POSIX
+- SAP HANA
+- HCP 
+
+### Azure Managed Lustre
+
+Fully-managed, high throughput, low latency Lustre file systems
+- simplified
+- lower setup costs
+- reduced maintenance
+
+Workloads:
+- HPC 
+- AI workloads
+
+### Azure Data Lake Storage (ADLS)
+
+## Analytics
+
+## Azure Synapse Analytics
+
+## Azure Data Factory
+
+## Azure Databricks
+
+## Fault / Update domains
+
+| FD-0 | FD-1 | FD-2 |
+| ---- | ---- | ---- |
+| VM-1<br/>UD-1  | VM-2<br/>UD-2 | VM-3<br/>UD-3 |
+| VM-4<br/>UD-4 | VM-5<br/>UD-5 | VM-6<br/>UD-1 |
