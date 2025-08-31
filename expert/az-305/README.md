@@ -177,7 +177,7 @@ Fast fully-managed big-data analytics platform, optimized for querying and analy
 
 ## Azure Event Hubs
 
-Big-data data-streaming service capable of millions of events per second, which Apache Kafka compatibility.
+Big-data data-streaming service capable of millions of events per second, with Apache Kafka compatibility.
 
 ## MSFT Entra ID
 
@@ -469,20 +469,20 @@ Fully-managed, enterprise-grade NAS
 - SMBv3.x
 
 Workloads:
-- POSIX
-- SAP HANA
-- HCP 
+  - POSIX
+  - SAP HANA
+  - HCP 
 
 ### Azure Managed Lustre
 
 Fully-managed, high throughput, low latency Lustre file systems
-- simplified
-- lower setup costs
-- reduced maintenance
+  - simplified
+  - lower setup costs
+  - reduced maintenance
 
 Workloads:
-- HPC 
-- AI workloads
+  - HPC 
+  - AI workloads
 
 ### Azure Data Lake Storage (ADLS)
 
@@ -492,6 +492,9 @@ Workloads:
 
 ## Azure Data Factory
 
+Cloud-based serverless ETL (Extract, Transform, Load) data integration service
+  - pipelines for scheduling jobs
+
 ## Azure Databricks
 
 ## Fault / Update domains
@@ -500,3 +503,53 @@ Workloads:
 | ---- | ---- | ---- |
 | VM-1<br/>UD-1  | VM-2<br/>UD-2 | VM-3<br/>UD-3 |
 | VM-4<br/>UD-4 | VM-5<br/>UD-5 | VM-6<br/>UD-1 |
+
+## Azure Front Door
+
+Routes clients to fastest and most available app backend
+  - L7 / Http / Https
+  - Internet-facing application backend can be hosted inside / outside Azure
+
+Features:
+  - URL-based routing
+  - Priority-based routing
+  - multi-site hosting
+  - Session affinity
+  - SSL termination
+  - leverage WAF
+
+## Azure ExpressRoute
+
+
+
+> ExpressRoute **does not** support encryption natively.
+
+Customer / Provider will have to provide encryption solution themselves
+  - typically a S2S VPN (IPSec encryption in-transit)  
+  - private peering between on-prem <--> Azure VNet over ExpressRoute circuit
+Prioritize IPSec-protected connections over ExpressRoute direct connections
+  - provide larger amount of addresses for IPSec VPN BGP Session > direct ExpressRoute path
+  - Advertise disjoint prefixes
+
+## Azure Firewall
+
+Cloud-native, scalable, reliable firewall security service
+  - integrated threat intelligence
+  - centralized network policy
+  - detailed logging
+
+Integrates with:
+  - virtual networks
+  - LAWs
+  - Defender for Cloud
+
+SKUs:
+  - Basic
+  - Standard (L3-L7 filtering)
+  - Premium
+
+# Azure Application Gateway
+
+## Azure Traffic Manager
+
+## Azure VPN Gateway
