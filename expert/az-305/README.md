@@ -333,14 +333,16 @@ Targets...
 
 ## MSFT Priva
 
-## Structured data vs Unstructured data
+## Designing for Data
 
-| --- | Structured data | Unstructured data |
+### Types of Data
+
+| Structured data | Semi-structured | Unstructured data | 
 | --- | --------------- | ----------------- |
-| What? |  organized in predefined model | schema-less |
-| Examples | <ul><li>key-value pairs</li></ul> | <ul> <li>documents</li> <li>images</li> <li>videos</li> </ul> |
+|  organized in predefined model | tags clarify how data is organized | schema-less |
+| <ul><li>key-value pairs</li><li>Relational databases (SQL)</li></ul> | <ul><li>Cosmos DB / NoSQL</li><li>HTML</li><li>JSON</li><li>XML</li></ul>| <ul><li>documents (.docx, .pptx)</li><li>images</li><li>videos</li><li>Text files (.txt, .pdf, .rtf)</li></ul> |
 
-## Data Encryption
+## Database Encryption
 
 Security methods that turn data unreadable. It can only be decrypted by an authorized key
 
@@ -476,20 +478,41 @@ Managed, modern data storage solutions for a variety of scenarios, offering...
 | Premium Block        | <ul><li>LRS</li><li>ZRS</li></ul> |
 | Premium Files        | <ul><li>LRS</li><li>ZRS</li></ul> |
 | Premium Page         | <ul><li>LRS</li></ul> |
+
 ### Azure Blob / Data Lake Storage (ADLS)
 
 Unstructured data storage at massive scale
-- documents
-- images
-- videos
-- other binary data
+  - documents
+  - images
+  - videos
+  - other binary data
+
+Read-heavy sequential access workloads
 
 > Blob = Binary Large Objects
 
+Immutable storage / WORM
+  - data can't be modified / deleted
+  - Levels...
+    - account
+    - container
+    - version
+  - Time-based retention...
+    - specified time interval
+    - deletion possible after expiry (overwrites not possible)
+    - Hot, Cool, Archive tiers
+  - Legal hold:
+    - applicable until _explicitly **cleared**_
+    - no modifications or deletions
+    - Premium Blob uses for immutable storage
+
+
+> WORM = Write Once, Read Many
+
 Scenarios...
-- streaming
-- random access
-- big data analytics
+  - streaming
+  - random access
+  - big data analytics
 
 ### Azure Files
 
@@ -497,6 +520,24 @@ Fully-managed, mountable, cloud file shares
 - SMB 
 - NFS
 - Rest API
+
+Can store apps and config files on VMs
+  - reducing time for VMs --> production-ready
+
+Azure File Sync...
+  - cache Azure Files locally on Windows file servers
+  - flexibility, performance, compatibility
+  - SMB, NFS, FTPS support
+
+Performance levels...
+  - Standard uses HDDs
+  - Premium Files uses SSDs
+
+Storage Tiers...
+  - Premium: 
+  - Transaction-optimized: transaction-heavy workloads but no need for lowest latency
+  - Hot Access: 
+  - Cool Access: cost-efficient storage
 
 ### Azure Elastic SAN
 
@@ -530,6 +571,33 @@ Persistently store data on virtual hard disks
 - accessible
 - attachable
 
+| Ultra | Premium SSD | Standard SSD | Standard HDD |
+| ----- | ----------- | ------------ | --- |
+| IO-intensive, like SAP HANA, SQL Server, Oracle | Production and performance-sensitive workloads | web servers, lightly-used, Dev/Test | backup, non-critical, infrequent access |
+
+Hierarchy...
+  1. Ultra
+  2. Premium SSD
+  3. Standard SSD
+  4. Standard HDD
+
+Azure Disk Encryption (ADE)
+  - VHD is encrypted
+  - VHD only accessible by VM owning the disk
+  - integrated with Azure Key Vault
+
+Server-side Encryption (SSE)
+  - encryption at-rest
+  - encryption on the physical disk (in datacenter)
+  - **does not** include temp disks or disk caches
+
+Encryption at-host
+  - Server encrypts the data
+  - encrypted data is stored in Azure Storage
+  - includes temp disks and disk caches
+
+Caching
+
 ### Azure Container Storage
 
 Volume management, deployment and orchestration integrable with Kubernetes
@@ -539,6 +607,8 @@ Volume management, deployment and orchestration integrable with Kubernetes
 Fully-managed, enterprise-grade NAS
 - NFSv3, NFSv4.1
 - SMBv3.x
+
+Random access, latency/IOPS sensitivity, multi-protocol
 
 Workloads...
   - POSIX
