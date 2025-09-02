@@ -130,7 +130,7 @@ Categories...
 
 ## Paired Regions
 
-![paired regions](/images/region-pairs.png)
+![paired regions](https://github.com/donovm4/msft-certifications/blob/main/expert/az-305/images/region-pairs.png)
 
 ## Activity Log
 
