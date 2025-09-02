@@ -126,7 +126,7 @@ Categories...
   - Zonal: resource / service is pinned to a specific zone
   - Zone-redundant: resource / service is replicated across 3 zones within region
 
-![availability zones](/images/availability-zones.png)
+![availability zones](https://github.com/donovm4/msft-certifications/blob/main/expert/az-305/images/availability-zones.png)
 
 ## Paired Regions
 
