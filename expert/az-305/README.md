@@ -8,7 +8,7 @@ Comprehensive guidance and tools to help organizations adopt Azure.
 - design, build, manage
 - secure and scale
 
-Foundational Phases:
+Foundational Phases...
 1. Strategy
   - define business goals
 2. Plan
@@ -23,8 +23,13 @@ Foundational Phases:
   - modernize existing workloads
   - build new cloud-native workloads/features
 
-Operational:
+Operational...
 1. Govern
+  - build a team
+  - access risks
+  - document policies
+  - enforce policies
+  - monitor compliance
   - manage risks and compliance
     - policy enforcement
     - access controls
@@ -41,7 +46,7 @@ Operational:
 
 Comprehensive guidance and best practices to access and improve cloud workloads
 
-Pillars:
+Pillars...
 1. Reliability
   - workloads function and recover with minimal downtime
     - Redundancy
@@ -97,7 +102,7 @@ Pillars:
   - 
 - Custom roles
 
-Settings:
+Settings...
   - Eligible
     - User must be elevated to the role
   - Active
@@ -108,6 +113,24 @@ Settings:
 1. Service principal
 2. Role definition
 3. Scope
+
+## Regions
+
+Geographical area that contains 1-n datacenters
+
+## Availability Zones
+
+Separate datacenters within regions.
+
+Categories...
+  - Zonal: resource / service is pinned to a specific zone
+  - Zone-redundant: resource / service is replicated across 3 zones within region
+
+![availability zones](/images/availability-zones.png)
+
+## Paired Regions
+
+![paired regions](/images/region-pairs.png)
 
 ## Activity Log
 
@@ -122,7 +145,7 @@ Insights into workload's performance, availability, functionality
 
 ### Metrics & Logs
 
-- collecting from:
+- collecting from...
   - resources
   - applications
   - guest OS
@@ -131,10 +154,10 @@ Insights into workload's performance, availability, functionality
 ### Alerts
 
   - notified for critical conditions
-  - based on queries / conditions:
+  - based on queries / conditions...
     - baseline
     - custom
-    - leverage:
+    - leverage...
       - metrics
       - Activity Log
       - log queries
@@ -182,7 +205,7 @@ Big-data data-streaming service capable of millions of events per second, with A
 ## MSFT Entra ID
 
 Centralized cloud-based identity and access management (IAM) service
-- Identity Provider managing access of:
+- Identity Provider managing access of...
   - users
   - groups
   - devices 
@@ -194,7 +217,7 @@ Centralized cloud-based identity and access management (IAM) service
 ## MSFT Entra External ID
 
 - invite guest users into organization
-- process:
+- process...
   - invitation
   - redemption
 - self-service sign-up
@@ -202,7 +225,7 @@ Centralized cloud-based identity and access management (IAM) service
 -  principal name contains the `#EXT#` identifier
 
 B2B Collaboration / External Identities
-- The partner uses their own identity management system(s). Guest users can sign-in to your apps and services, with their own identities:
+- The partner uses their own identity management system(s). Guest users can sign-in to your apps and services, with their own identities...
   - MSFT Entra accounts
     - work
     - school
@@ -231,7 +254,7 @@ Provides access to corporate data and resources through user identities and perm
 - seamless user experience
   - automatic routing to resources without VPN
 
-Integrates with:
+Integrates with...
 - MSFT Entra Internet Access
 - MSFT Defender for Identity
 - Conditional access policies
@@ -275,7 +298,7 @@ Create DLP policies that can help you identify, monitor, and auto protect sensit
   - in transit
   - in use
 
-Targets:
+Targets...
   - M365 services
   - Office applic, macOS
   - non-MSFT cloud apps
@@ -351,7 +374,7 @@ Fully-managed, serverless NoSQL, relational, vector database, supporting unstruc
 
 ## Azure SQL Database (PaaS)
 
-Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardware
+Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardware where networking, disaster recovery, and high availability are automatically configured
 - scalability
   - hyper-scale
   - serverless
@@ -363,17 +386,66 @@ Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardwar
   - AI / ML performance tuning
 - reliability
 
+Best for modern applications needing to leverage serverless or Hyper-scale
+
+Deployment model(s)...
+  1. single instance
+  2. elastic pools
+
+Purchase model(s)...
+  1. DTU
+  2. vCore
+
+Redundancy...
+  - local redundancy for built-in availability
+  - leverage zone redundancy for high availability
+  
+
 ## Azure SQL Managed Instance (PaaS)
 
-Fully-managed SQL database, where MSFT manages the OS and hardware
+Fully-managed SQL database, where MSFT manages the OS and hardware and customer managed SQL Server instance
+
+Best for life-and-shift migrations, instance-scoped features
+
+Replication...
+  1. active-geo replication
+  1. failover groups
+
+Deployment model(s)...
+  1. Single instance
+  2. Instance pools
+
+Purchase model(s)...
+  1. vCore
+
+Redundancy
+  - local redundancy for built-in availability
+  - leverage zone redundancy for high availability
+
+Backup
+  - automatic backups stored in RA-GRS
+  - full: every week
+  - differential: every 12 hours
+  - transaction log: every 10 minutes
+  - PITR: 35 days
+  - LTR: 10 years
 
 ## SQL Server on Azure VMs (IaaS)
 
 Leverage SQL Server in Azure without managing on-premises hardware
 
+Best for migrations and applications requiring OS-level access
+
+Deployment model(s)...
+  1. SQL virtual machine
+
+Redundancy
+  - local redundancy / availability sets
+  - leverage zone redundancy for high availability
+
 ## Azure Storage
 
-Managed, modern data storage solutions for a variety of scenarios, offering:
+Managed, modern data storage solutions for a variety of scenarios, offering...
 - high availability
 - scalability
 - security
@@ -414,7 +486,7 @@ Unstructured data storage at massive scale
 
 > Blob = Binary Large Objects
 
-Scenarios:
+Scenarios...
 - streaming
 - random access
 - big data analytics
@@ -428,13 +500,13 @@ Fully-managed, mountable, cloud file shares
 
 ### Azure Elastic SAN
 
-Cloud-based SAN configurations, leveraging:
+Cloud-based SAN configurations, leveraging...
 - deployment simplification
 - scalability
 - management capabilities
 - high availability
 
-Workloads:
+Workloads...
 - VMs
 - AKS
 - MariaDB
@@ -468,7 +540,7 @@ Fully-managed, enterprise-grade NAS
 - NFSv3, NFSv4.1
 - SMBv3.x
 
-Workloads:
+Workloads...
   - POSIX
   - SAP HANA
   - HCP 
@@ -480,11 +552,13 @@ Fully-managed, high throughput, low latency Lustre file systems
   - lower setup costs
   - reduced maintenance
 
-Workloads:
+Workloads...
   - HPC 
   - AI workloads
 
 ### Azure Data Lake Storage (ADLS)
+
+Scalable, secure data lake for large-scale analytics with high throughput
 
 ## Analytics
 
@@ -495,7 +569,56 @@ Workloads:
 Cloud-based serverless ETL (Extract, Transform, Load) data integration service
   - pipelines for scheduling jobs
 
+Big data: lots of raw, unorganized data from various systems
+
+1. Data compression
+  - compress data before writing to data storage
+  - optimizes bandwidth and storage
+2. Diverse sources
+  - on-prem
+  - cloud
+  - third-party
+3. Event triggers
+  - custom triggers 
+  - actions based on conditions
+4. Preview / Validation
+  - preview / validation _during_ transfer
+  - correct errors _before_ analysis
+5. Data Flows
+  - create ETL processes
+  - code
+  - visual tools
+6. Security integrated
+  - RBAC
+
 ## Azure Databricks
+
+Apache Spark-based analytics platform, large-scale data processing
+
+Clusters
+  - single node
+  - multi-node
+
+Notebooks
+  - interactive coding workspace
+  - visual insights
+  - collaboration
+
+Jobs
+  - schedule automated data processing
+
+Databricks File System (DBFS)
+  - distributed datasets
+  - used in Notebooks and workflows
+
+Integrates with...
+  - Azure Data Lake
+  - Azure Synapse Analytics
+  - Azure ML
+
+Auto-scaling clusters
+Supports RBAC
+Supports Scala R
 
 ## Fault / Update domains
 
@@ -510,7 +633,7 @@ Routes clients to fastest and most available app backend
   - L7 / Http / Https
   - Internet-facing application backend can be hosted inside / outside Azure
 
-Features:
+Features...
   - URL-based routing
   - Priority-based routing
   - multi-site hosting
@@ -538,12 +661,12 @@ Cloud-native, scalable, reliable firewall security service
   - centralized network policy
   - detailed logging
 
-Integrates with:
+Integrates with...
   - virtual networks
   - LAWs
   - Defender for Cloud
 
-SKUs:
+SKUs...
   - Basic
   - Standard (L3-L7 filtering)
   - Premium
@@ -552,4 +675,69 @@ SKUs:
 
 ## Azure Traffic Manager
 
+
+| Service            | Traffic     | Global/Regional |
+| -------            | -------     | --------------- |
+| Azure Front Door    | HTTP/S     | Global          |
+| Traffic Manager     | non HTTP/S | Global          |
+| Application Gateway | HTTP/S     | Regional        |
+| Azure Load Balancer | non HTTP/S | Regional        |
+
+
 ## Azure VPN Gateway
+
+## Password Hash Sync
+
+  - securely syncs password hashes of on-prem AD --> Entra ID 
+    - credentials stored in both directories
+  - leverages through Entra Connect installed on on-prem AD
+
+Benefits...
+  - single sign-on (SSO)
+  - hashes stored instead of plaintext passwords
+  - prerequisite for _self-service password reset_ (SSPR)
+  - faster AUTHN since AUTHN happens in cloud
+  - ideal for hybrid environments
+  - _Password Write-back_ if you want to sync cloud changes --> on-prem
+
+## Pass-through AUTHN
+
+password sync without federation environment requirements
+  - technically free feature
+
+Benefits...
+  - single sign-on (SSO)
+
+## Single Sign-On (SSO)
+
+> Can be combined with either:
+>
+>   - PHS
+>   - PTA
+>
+> **Not applicable** to Active Directory Federation Services (ADFS)
+
+## Azure Key Vault 
+
+[Key rotation](https://learn.microsoft.com/en-us/azure/key-vault/keys/how-to-configure-key-rotation)
+
+## Hardware Security Module (HSM)
+
+- customer specific security domain
+
+## Azure Policy
+
+> Policy **DOES NOT** affect existing resources, remediation tasks will need to be created.
+
+- `disabled` is best used for testing before / without implementing
+- `modify` affects new resources
+
+## Azure Migrate
+
+Primary tool for assessment and migration of VMs, physical machines, databases
+  - TCO Estimation
+  - Right-sizing recommendations
+  - Dependency mapping
+  - Migration planning
+  - Minimize downtime
+  - Optimize costs
