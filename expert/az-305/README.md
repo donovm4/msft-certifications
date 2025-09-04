@@ -347,28 +347,45 @@ Targets...
 Security methods that turn data unreadable. It can only be decrypted by an authorized key
 
 Transparent Data Encryption (TDE)
-- encrypts entire database
-- only decrypted when authorized user requests access
+  - encrypts entire database
+  - data at rest
+  - only decrypted when authorized user requests access
 
 Column-level Encryption
-- encrypts specific columns of tables
-- useful for encrypting sensitive data stored
+  - encrypts specific columns of tables
+  - useful for encrypting sensitive data stored
 
 Field-level Encryption
-- encrypts individual fields
-- application-level
+  - encrypts individual fields
+  - application-level
 
 End-to-End Encryption (e2e)
-- data encryption n-transit
+  - data encryption n-transit
+
+Secure Socket Layer (SSL) / Transport Layer Security (TLS)
+  - data in-motion
+  - always encrypted for all encryption
+
+Dynamic Data Masking
+  - policy-based security feature
+  - hide sensitive data in result of query
 
 Leverage Azure Key Vault for storing encryption keys _securely_
 
 ## Azure Cosmos DB
 
 Fully-managed, serverless NoSQL, relational, vector database, supporting unstructured _and_ semi-structured data **without** fixed schema
-- high performance
-- global distribution (lower latency)
-- scalability
+  - high performance (single-digit millisecond)
+  - global distribution (lower latency)
+  - scalability
+
+API supported:
+  - NoSQL
+  - PostgreSQL
+  - MariaDB
+  - Cassandra
+  - MongoDB
+  - Table
 
 > 'NoSQL' = Not Only SQL; means that the database does not rely on traditional tabled-based relational model.
 
@@ -376,38 +393,78 @@ Fully-managed, serverless NoSQL, relational, vector database, supporting unstruc
 
 ## Azure SQL Database (PaaS)
 
-Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardware where networking, disaster recovery, and high availability are automatically configured
-- scalability
-  - hyper-scale
-  - serverless
-- security
-  - encryption
-  - network isolation
-  - threat detection
-- performance
-  - AI / ML performance tuning
-- reliability
+> Microsoft recommended
+
+Fully-managed, relational database built on MSFT-managed SQL Server, OS, hardware where networking, disaster recovery, and highest availability are automatically configured
+  - scalability
+    - hyper-scale (vCore only)
+    - serverless (auto-scaling)
+  - large
+    - up to 100TB
+  - security
+    - encryption
+    - network isolation
+    - threat detection
+  - performance
+    - AI / ML performance tuning
+  - reliability
 
 Best for modern applications needing to leverage serverless or Hyper-scale
+
+Storage sizes...
+  - General Purpose
+    - 1 `GB` - 4 `TB`
+  - Business Critical
+    - 1 `GB` - 4 `TB`
+  - Hyper-scale
+    - 10 `GB` - 128 `TB`
+
+  > [!IMPORTANT]
+  > [Service tiers](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-sql-database-vcore?view=azuresql#service-tiers)
 
 Deployment model(s)...
   1. single instance
   2. elastic pools
+    - databases share resources:
+      - compute 
+      - storage
 
 Purchase model(s)...
-  1. DTU
-  2. vCore
+  1. DTU (database transaction unit)
+    - pre-configured resource measures
+    - easiest to implement
+  2. vCore (virtual core)
+    - choose individual scaling of:
+      - compute
+      - storage
+      - I/O
+  3. Serverless
+    - auto-scaling
+    - billed only for what's used
 
 Redundancy...
   - local redundancy for built-in availability
+    - LRS
   - leverage zone redundancy for high availability
+    - ZRS
+    - GRS
   
+Support for Azure Hybrid Benefit and Reservations
 
 ## Azure SQL Managed Instance (PaaS)
 
-Fully-managed SQL database, where MSFT manages the OS and hardware and customer managed SQL Server instance
+Fully-managed SQL Server that you can deploy databases, where MSFT manages the OS and hardware and customer manages the database server instance (NOT the machine).
+
+Storage size: 32 GB - 16 TB
 
 Best for life-and-shift migrations, instance-scoped features
+  - CLR
+  - SQL Server Agent
+  - Service Broker
+  - Linked Servers
+  - Database Mail
+  - ML services
+  - Distributed transactions
 
 Replication...
   1. active-geo replication
@@ -416,13 +473,18 @@ Replication...
 Deployment model(s)...
   1. Single instance
   2. Instance pools
+    - resource sharing between instances
 
 Purchase model(s)...
   1. vCore
 
 Redundancy
   - local redundancy for built-in availability
+    - LRS
   - leverage zone redundancy for high availability
+    - ZRS
+    - GRS
+    - GZRS
 
 Backup
   - automatic backups stored in RA-GRS
@@ -431,6 +493,18 @@ Backup
   - transaction log: every 10 minutes
   - PITR: 35 days
   - LTR: 10 years
+
+### SQL PaaS Tiers
+
+General Purpose (vCore)
+
+Business Critical (vCore)
+
+Basic (DTU)
+
+Standard (DTU)
+
+Premium (DTU)
 
 ## SQL Server on Azure VMs (IaaS)
 
@@ -445,13 +519,39 @@ Redundancy
   - local redundancy / availability sets
   - leverage zone redundancy for high availability
 
+Supports Azure Hybrid Benefit
+
+## Azure SQL Edge
+
+Optimized engine for IoT (Edge) deployments, relational and nonrelational data
+  - stream
+  - process
+  - analyze
+
+Containerized Linux application
+  - Edge Developer
+    - 4 cores, 32 `GB` max
+    - Development ONLY
+  - Edge
+    - 8 cores, 64 `GB` max
+    - Production
+
+Security...
+  1. AUTHn / AUTHz
+  2. TDE
+  3. Always Encrypted
+
+Deployment...
+  - Connected: from Azure Marketplace
+  - Disconnect: deployed through container images from docker hub, on Docker containers / Kubernetes clusters
+
 ## Azure Storage
 
 Managed, modern data storage solutions for a variety of scenarios, offering...
-- high availability
-- scalability
-- security
-- global accessibility (HTTP/S via REST API)
+  - high availability
+  - scalability
+  - security
+  - global accessibility (HTTP/S via REST API)
 
 ### Redundancy / Replication
 
@@ -517,9 +617,9 @@ Scenarios...
 ### Azure Files
 
 Fully-managed, mountable, cloud file shares
-- SMB 
-- NFS
-- Rest API
+  - SMB 
+  - NFS
+  - Rest API
 
 Can store apps and config files on VMs
   - reducing time for VMs --> production-ready
@@ -542,16 +642,16 @@ Storage Tiers...
 ### Azure Elastic SAN
 
 Cloud-based SAN configurations, leveraging...
-- deployment simplification
-- scalability
-- management capabilities
-- high availability
+  - deployment simplification
+  - scalability
+  - management capabilities
+  - high availability
 
 Workloads...
-- VMs
-- AKS
-- MariaDB
-- SQL
+  - VMs
+  - AKS
+  - MariaDB
+  - SQL
 
 > Accessible via internet Small Computer Systems Interface (iSCSI)
 
@@ -562,14 +662,14 @@ Asynchronous message queueing for application components
 ### Azure Tables
 
 Leverage cloud-based, semi-structured NoSQL data
-- key-value pairing
-- schemaless design
+  - key-value pairing
+  - schemaless design
 
 ### Azure Managed Disks
 
 Persistently store data on virtual hard disks
-- accessible
-- attachable
+  - accessible
+  - attachable
 
 | Ultra | Premium SSD | Standard SSD | Standard HDD |
 | ----- | ----------- | ------------ | --- |
@@ -596,7 +696,17 @@ Encryption at-host
   - encrypted data is stored in Azure Storage
   - includes temp disks and disk caches
 
-Caching
+Caching...
+  1. Options
+    - `None`: for **write-only** and **write-heavy** disks
+    - `ReadOnly`: for **read-only** and **read-heavy** disks
+    - `ReadWrite`: only for applications that handle writing cache to persistent disks when needed
+  2. Defaults
+    - OS disks - `ReadWrite`
+    - data disks - `ReadOnly`
+  2. 
+
+  > Disk caching isn't supported for disks 4 TiB and larger
 
 ### Azure Container Storage
 
@@ -605,8 +715,8 @@ Volume management, deployment and orchestration integrable with Kubernetes
 ### Azure NetApp Files (ANF)
 
 Fully-managed, enterprise-grade NAS
-- NFSv3, NFSv4.1
-- SMBv3.x
+  - NFSv3, NFSv4.1
+  - SMBv3.x
 
 Random access, latency/IOPS sensitivity, multi-protocol
 
@@ -629,6 +739,35 @@ Workloads...
 ### Azure Data Lake Storage (ADLS)
 
 Scalable, secure data lake for large-scale analytics with high throughput
+
+### Networking, Network Security, Security
+
+Shared access signatures (SAS)
+  - granular, dedicated access to client access
+  - generates token with parameters indicated HOW and WHAT
+
+Storage Account Firewall rules / Resource settings
+  - limit requests from public access
+    - IP addresses
+    - VNets / subnets
+    - Trusted Azure services
+
+Private Endpoints
+  - special network interface for virtual networks / on-premises scenarios
+
+Secure Transfer
+
+### Encryption
+
+Data is Azure Storage is encrypted at-rest by default, and cannot be disabled
+
+Customer-managed keys
+  - more granular control versus Microsoft-managed keys
+  - encrypt/decrypt all data in storage account
+  - MUST be stored in Azure Key Vault
+
+Customer-provided keys
+  - used to encrypt/decrypt data for read and writes to Azure Blob
 
 ## Analytics
 
