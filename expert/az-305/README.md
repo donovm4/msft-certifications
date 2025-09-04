@@ -4,20 +4,20 @@
 
 Comprehensive guidance and tools to help organizations adopt Azure.
 
-- informed decision-making
-- design, build, manage
-- secure and scale
+  - informed decision-making
+  - design, build, manage
+  - secure and scale
 
 Foundational Phases...
 1. Strategy
-  - define business goals
+    - define business goals
 2. Plan
-  - align adoption plans with measurable business goals
+    - align adoption plans with measurable business goals
 3. Ready
-  - prepare landing zones, implementing
-    - networking
-    - security
-    - governance controls
+    - prepare landing zones, implementing
+      - networking
+      - security
+      - governance controls
 4. Adopt
   - migrate workloads
   - modernize existing workloads
@@ -25,22 +25,22 @@ Foundational Phases...
 
 Operational...
 1. Govern
-  - build a team
-  - access risks
-  - document policies
-  - enforce policies
-  - monitor compliance
-  - manage risks and compliance
-    - policy enforcement
-    - access controls
-    - compliance monitoring
+    - build a team
+    - access risks
+    - document policies
+    - enforce policies
+    - monitor compliance
+    - manage risks and compliance
+      - policy enforcement
+      - access controls
+      - compliance monitoring
 2. Secure
-  - protect the environment
+    - protect the environment
 3. Manage
-  - operate and optimize
-    - Azure Monitor
-    - MSFT Defender for Cloud
-    - Azure Cost Management
+    - operate and optimize
+      - Azure Monitor
+      - MSFT Defender for Cloud
+      - Azure Cost Management
 
 ## Well-Architected Framework (WAF)
 
@@ -48,31 +48,31 @@ Comprehensive guidance and best practices to access and improve cloud workloads
 
 Pillars...
 1. Reliability
-  - workloads function and recover with minimal downtime
-    - Redundancy
-    - Failover
-    - Backups
+    - workloads function and recover with minimal downtime
+      - Redundancy
+      - Failover
+      - Backups
 2. Operational Excellence
-  - monitoring
-  - automation (DevOps)
+    - monitoring
+    - automation (DevOps)
 3. Security
-  - protect data from cyber threats
+    - protect data from cyber threats
 4. Cost Optimization
-  - rate optimizations
-  - usage optimizations
-  - FinOps practices
+    - rate optimizations
+    - usage optimizations
+    - FinOps practices
 5. Performance Efficiency
-  - workloads enabled to scale as needed
+    - workloads enabled to scale as needed
 
 ## Governance / Management Hierarchy
 
 1. Management Groups
 
-  - Root Management Group
-    - ...
+    - Root Management Group
+      - ...
 
-  - Management Groups
-    - ...
+    - Management Groups
+      - ...
 
 2. Subscriptions
 
