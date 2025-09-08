@@ -19,9 +19,9 @@ Foundational Phases...
       - security
       - governance controls
 4. Adopt
-  - migrate workloads
-  - modernize existing workloads
-  - build new cloud-native workloads/features
+    - migrate workloads
+    - modernize existing workloads
+    - build new cloud-native workloads/features
 
 Operational...
 1. Govern
@@ -131,6 +131,10 @@ Categories...
 ## Paired Regions
 
 ![paired regions](https://github.com/donovm4/msft-certifications/blob/main/expert/az-305/images/region-pairs.png)
+
+## Availability Sets
+
+Protect resources across fault domains _inside_ of a **single** datacenter
 
 ## Activity Log
 
@@ -579,7 +583,7 @@ Managed, modern data storage solutions for a variety of scenarios, offering...
 | Premium Files        | <ul><li>LRS</li><li>ZRS</li></ul> |
 | Premium Page         | <ul><li>LRS</li></ul> |
 
-### Azure Blob / Data Lake Storage (ADLS)
+### Azure Blob
 
 Unstructured data storage at massive scale
   - documents
@@ -606,13 +610,53 @@ Immutable storage / WORM
     - no modifications or deletions
     - Premium Blob uses for immutable storage
 
-
 > WORM = Write Once, Read Many
 
 Scenarios...
   - streaming
   - random access
   - big data analytics
+
+### Azure Data Lake Storage (ADLS)
+
+Scalable, secure data lake storage for large-scale analytics with high throughput
+  - Ingest data
+    - unplanned? AzCopy, CLI, PowerShell, Storage Explorer
+    - relational? Data Factory <-- Cosmos DB, SQL DB, SQL MI
+    - streaming? Apache Storm, HDInsights, Stream Analytics
+  - Access
+    - GUI? Storage Explorer
+    - Script? PowerShell, CLI, HDFS CLI, SKDs
+  - Access control 
+    - Azure RBAC
+    - ACLs
+
+Supports **any** type of data
+  - unstructured
+  - semi-structured
+  - structured
+
+  > [!TIP]
+  > Good for storing large volumes of _text_ data
+
+Supports HNS, Hadoop (HDFS), POSIX
+
+Lifecycle...  
+  1. Data Factory 
+  2. ADLS 
+  3. Synapse
+
+Use cases:
+  - Data warehouse
+  - support for diverse collection
+  - real-time ingestion
+
+Redundancy...
+  - built-in LRS
+  - manual configuration of data replication
+
+> [!IMPORTANT]
+> Azure Back DOES NOT support ADLS
 
 ### Azure Files
 
@@ -658,6 +702,21 @@ Workloads...
 ### Azure Queues
 
 Asynchronous message queueing for application components
+  - 80 GB needed to be stored in one queue
+  - progress tracking
+  - server-side logs required
+
+Accessible via REST-based interface
+
+### Service Bus Queues
+
+Fully-managed message broker to decouple apps and services
+  - Supports publish-subscribe and message queues
+
+If you want apps to receive messages without polling
+First-In FIrst-Out required
+Transactional behavior / Atomicity required
+
 
 ### Azure Tables
 
@@ -698,13 +757,13 @@ Encryption at-host
 
 Caching...
   1. Options
-    - `None`: for **write-only** and **write-heavy** disks
-    - `ReadOnly`: for **read-only** and **read-heavy** disks
-    - `ReadWrite`: only for applications that handle writing cache to persistent disks when needed
+      - `None`: for **write-only** and **write-heavy** disks
+      - `ReadOnly`: for **read-only** and **read-heavy** disks
+      - `ReadWrite`: only for applications that handle writing cache to persistent disks when needed
   2. Defaults
-    - OS disks - `ReadWrite`
-    - data disks - `ReadOnly`
-  2. 
+      - OS disks - `ReadWrite`
+      - data disks - `ReadOnly`
+  3. 
 
   > Disk caching isn't supported for disks 4 TiB and larger
 
@@ -736,10 +795,6 @@ Workloads...
   - HPC 
   - AI workloads
 
-### Azure Data Lake Storage (ADLS)
-
-Scalable, secure data lake for large-scale analytics with high throughput
-
 ### Networking, Network Security, Security
 
 Shared access signatures (SAS)
@@ -769,14 +824,45 @@ Customer-managed keys
 Customer-provided keys
   - used to encrypt/decrypt data for read and writes to Azure Blob
 
-## Analytics
-
 ## Azure Synapse Analytics
+
+MPP architecture for real-time analysis (through running queries) of serverless / large-scale data
+  - discovery
+  - integration
+  - transformation
+  - management
+
+Architecture...
+  - Control node -   evenly across compute nodes
+  - Compute node - provides compute power so data can be processed
+
+Components...
+  - SQL pool: serverless or dedicated resource models for node-based architecture
+  - Spark pool: clusters that run Apache Spark; Python, C#, Scala, SQL
+  - pipelines: applies capabilities of Azure Data Factory
+  - Synapse Link: connect to Cosmos DB
+  - Synapse Studio: web-based IDE for Synapse Analytics
+
+Notes...
+  - T-SQL queries to be able to query relation an nonrelational
+  - Save data as SQL tables
+  - Supports PowerBI and ML 
+
+Use cases...
+  - various data sources
+  - ML + Spark
+  - ADLS integration
+  - real-time analytics
+
+> [!IMPORTANT]
+> MPP = Massively Parallel Processing
 
 ## Azure Data Factory
 
 Cloud-based serverless ETL (Extract, Transform, Load) data integration service
   - pipelines for scheduling jobs
+  - near real-time
+  - low code/no code
 
 Big data: lots of raw, unorganized data from various systems
 
@@ -794,11 +880,38 @@ Big data: lots of raw, unorganized data from various systems
   - preview / validation _during_ transfer
   - correct errors _before_ analysis
 5. Data Flows
-  - create ETL processes
-  - code
+  - create ETL processes for data transformations
+  - low code / no code
   - visual tools
 6. Security integrated
   - RBAC
+
+Process...
+  1. Connect + collect 
+      - ingest from various sources
+      - centralize
+  2. Transform + enrich
+      - Azure Databricks
+      - Azure HDInsights Hadoop
+  3. CI/CD
+      - GitHub
+      - Azure Pipelines
+      - ETL process incrementally
+  4. Monitor
+  
+Integration runtimes:
+| Azure | Self-hosted | Azure-SSIS |
+|--|--|--|
+|<ul><li>Data Flow</li><li>Data Movement</li><li>Activity dispatch</li></ul>|<ul><li>Data Movement</li><li>Activity dispatch</li></ul>|<ul><li>SQL Server Integration Services</li></ul>|
+
+## Data Factory vs Synapse Analytics
+
+| --- | Data Factory | Synapse |
+| --- | ------------ | ------- |
+| --- | supports data sharing across factories | --- |
+| Templates | supported | supported |
+| --- | cross region data flows | --- |
+| Monitoring | data monitoring (Azure Monitor) | Diagnostic logs (Azure Monitor) |
 
 ## Azure Databricks
 
@@ -829,6 +942,23 @@ Auto-scaling clusters
 Supports RBAC
 Supports Scala R
 
+## Azure Stream Analytics
+
+Analyze and process large-volume streaming data, sub-millisecond
+
+## Data paths (Warm, Cold, Hot)
+
+Warm...
+  - analysis as data flows through system(s)
+  - Stream Analytics for data processing
+  - Azure SQL DB, Azure Cosmos DB for storage
+
+Cold...
+  - 
+
+Hot...
+  -
+
 ## Fault / Update domains
 
 | FD-0 | FD-1 | FD-2 |
@@ -852,7 +982,7 @@ Features...
 
 ## Azure ExpressRoute
 
-
+dedicated PRIVATE CONNECTION (non-Internet) from on-prem to non-MSFT provider to Azure. 
 
 > ExpressRoute **does not** support encryption natively.
 
@@ -880,22 +1010,23 @@ SKUs...
   - Standard (L3-L7 filtering)
   - Premium
 
-# Azure Application Gateway
+## Azure Application Gateway
+
+## Azure VPN Gateway
+
+Sends encrypted traffic between Azure VNet and on-premises location(s), over the PUBLIC INTERNET.
 
 ## Azure Traffic Manager
 
 
-| Service            | Traffic     | Global/Regional |
-| -------            | -------     | --------------- |
-| Azure Front Door    | HTTP/S     | Global          |
-| Traffic Manager     | non HTTP/S | Global          |
-| Application Gateway | HTTP/S     | Regional        |
-| Azure Load Balancer | non HTTP/S | Regional        |
+| Service             | Traffic     | Global/Regional |
+| -------             | -------     | --------------- |
+| Azure Front Door    | HTTP/S      | Global          |
+| Traffic Manager     | non HTTP/S  | Global          |
+| Application Gateway | HTTP/S      | Regional        |
+| Azure Load Balancer | non HTTP/S  | Regional        |
 
-
-## Azure VPN Gateway
-
-## Password Hash Sync
+## Password Hash Sync (PHS)
 
   - securely syncs password hashes of on-prem AD --> Entra ID 
     - credentials stored in both directories
@@ -908,8 +1039,9 @@ Benefits...
   - faster AUTHN since AUTHN happens in cloud
   - ideal for hybrid environments
   - _Password Write-back_ if you want to sync cloud changes --> on-prem
+  - Leak Credential Report
 
-## Pass-through AUTHN
+## Pass-through AUTHN (PTA)
 
 password sync without federation environment requirements
   - technically free feature
@@ -950,3 +1082,98 @@ Primary tool for assessment and migration of VMs, physical machines, databases
   - Migration planning
   - Minimize downtime
   - Optimize costs
+
+## Design infrastructure solutions
+
+### Azure Virtual Machines
+
+Scenarios...
+  1. Build new workloads
+  2. Lift-and-Shift (Rehost) migrations
+
+Process...
+  1. Start with networking
+  2. Pick location of VM
+  3. Determine ideal size
+  4. Review pricing models (reservations, savings plans, AHUB)
+  5. Review storage options
+  5. What's the OS?
+
+### Azure Batch 
+
+Run large-scale apps efficiently
+  - HPC workloads (compute-intensive)
+  - dynamically adjustable resources
+  - parallel jobs
+
+### App Service
+
+HTTP-based service for web jobs, RESTful PIs, mobile backends
+  - lift-and-shift
+  - built-in load balancing
+  - CI/CD support/enablement
+
+### Azure Container Instances (ACI)
+
+Run containers on Azure
+  - simple applications
+  - automated tasks
+  - build jobs
+  - supports life-and-shift containerized applications
+
+Supports persistent storage by leveraging/mounting Azure Files shares
+Supports Linux and Windows
+
+Container groups...
+  - collection that gets scheduled on same host machine
+  - shared lifecycle, resources, network, storage
+
+Considerations...
+  - use a private registry (Docker Trusted Registry, Azure Container Registry)
+  - securely manage and govern images
+  - monitor resource activity
+
+### AKS
+
+Kubernetes container (full-fledged) orchestration and management on Azure
+  - docker support
+  - autoscaling
+  - static and dynamic storage volume
+  - HTTP support
+  - Docker support
+
+Horizontal pod autoscaler...
+  - increase pod count based on demand
+
+Cluster autoscaler...
+  - scales nodes based on node constraints
+
+### Messaging and Events
+
+- Messages contain raw data, where the destination source is expected to process component
+  - for distributed applications
+- Events are lighter weight (producers, consumers, channels), where destination source is not expected to process component.
+
+### Azure App Configuration
+
+Central management of application settings and feature flags
+
+### Network Requirements
+
+Max IP addresses in VNet: `65,536`
+Don't go smaller than CIDR range of `/16`
+NAT can help if you overlap your network and cannot redesign it
+
+### Hub-and-Spoke
+
+Isolate workloads but share common services
+
+### User-defined routes (UDRs)
+
+Leveraging static routes / custom routes to overwrite Azure's default routes --> Route Table
+  - BGP rules
+  - Service endpoints
+  - Route order: UDR > BGP > System (defaults)
+
+Enable filtering with Azure Firewall or forced tunneling
+Flow from subnet through NVAs
