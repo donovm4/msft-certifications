@@ -18,10 +18,20 @@ Foundational Phases...
       - networking
       - security
       - governance controls
-4. Adopt
+4. Adopt 
     - migrate workloads
-    - modernize existing workloads
+    - innovation / modernization of existing workloads
     - build new cloud-native workloads/features
+
+      ### Migration
+
+      1. Access
+          - **Rehost**: lift-and-shift, no code changes
+          - **Refactor**: repackage with minimal changes to leverage PaaS options
+          - **Rearchitect**: optimize app architecture for cloud scalability, like monolithic --> microservices
+          - **Rebuild**: rebuild the app using Azure technologies
+      2. Deploy
+      3. Release
 
 Operational...
 1. Govern
@@ -275,6 +285,10 @@ Provides IAM solutions for effective user management while keeping compliance in
 
 > Available through MSFT Entra P1 / P2 licenses
 
+## MSFT Entra Application Proxy
+
+Allow on-premises apps to use access tokens from Entra ID
+
 ## Role-based Access Control (RBAC)
 
 Provides fine-grained access management to resources and applications in Azure.
@@ -391,6 +405,10 @@ API supported:
   - MongoDB
   - Table
 
+Backup...
+  - continuous backup
+  > Not supported by Azure Backup
+
 > 'NoSQL' = Not Only SQL; means that the database does not rely on traditional tabled-based relational model.
 
 > Look into asynchronous / synchronous operations
@@ -453,7 +471,7 @@ Redundancy...
     - ZRS
     - GRS
   
-Support for Azure Hybrid Benefit and Reservations
+Support for Azure Hybrid Benefit, Reservations, SQL Spatial capabilities
 
 ## Azure SQL Managed Instance (PaaS)
 
@@ -471,7 +489,7 @@ Best for life-and-shift migrations, instance-scoped features
   - Distributed transactions
 
 Replication...
-  1. active-geo replication
+  1. 
   1. failover groups
 
 Deployment model(s)...
@@ -523,7 +541,14 @@ Redundancy
   - local redundancy / availability sets
   - leverage zone redundancy for high availability
 
-Supports Azure Hybrid Benefit
+Supports...
+  - Azure Hybrid Benefit
+  - SSIS
+
+## Azure Database Migration Service
+
+Fully-managed, designed for seamless migrations from multiple database sources to Azure data platforms with minimal downtime.
+- can be deployed using PowerShell
 
 ## Azure SQL Edge
 
@@ -634,6 +659,7 @@ Scalable, secure data lake storage for large-scale analytics with high throughpu
 Supports **any** type of data
   - unstructured
   - semi-structured
+    - including JSON
   - structured
 
   > [!TIP]
@@ -777,7 +803,7 @@ Fully-managed, enterprise-grade NAS
   - NFSv3, NFSv4.1
   - SMBv3.x
 
-Random access, latency/IOPS sensitivity, multi-protocol
+Random access, latency/IOPS sensitivity, multi-protocol (**interoperability**)
 
 Workloads...
   - POSIX
@@ -1018,6 +1044,10 @@ Sends encrypted traffic between Azure VNet and on-premises location(s), over the
 
 ## Azure Traffic Manager
 
+DNS-based global load balancer
+  - geographic routing
+
+
 
 | Service             | Traffic     | Global/Regional |
 | -------             | -------     | --------------- |
@@ -1043,7 +1073,7 @@ Benefits...
 
 ## Pass-through AUTHN (PTA)
 
-password sync without federation environment requirements
+password sync (**hashes NOT stored in cloud**) without federation environment requirements
   - technically free feature
 
 Benefits...
@@ -1099,6 +1129,12 @@ Process...
   5. Review storage options
   5. What's the OS?
 
+### Virtual Machine Scale Sets (VMSS)
+
+Proximity Placement...
+  - logical grouping to ensure resources are physically close to each other
+  - useful for workloads where low latency is a requirement
+
 ### Azure Batch 
 
 Run large-scale apps efficiently
@@ -1106,12 +1142,23 @@ Run large-scale apps efficiently
   - dynamically adjustable resources
   - parallel jobs
 
+### App Service Plans
+
+Premium V2 and above support Availability Zones
+
 ### App Service
 
 HTTP-based service for web jobs, RESTful PIs, mobile backends
   - lift-and-shift
   - built-in load balancing
   - CI/CD support/enablement
+
+
+
+#### Function App
+
+Consumption plan
+  - Maximum timeout: `5`-`10` minutes
 
 ### Azure Container Instances (ACI)
 
@@ -1177,3 +1224,18 @@ Leveraging static routes / custom routes to overwrite Azure's default routes -->
 
 Enable filtering with Azure Firewall or forced tunneling
 Flow from subnet through NVAs
+
+## Azure Backup
+
+## Azure Site Recovery
+
+- Replication of Azure and on-premises VMs within continuous time frame
+
+Does not support 
+  - blobs
+  
+## Azure Cache for Redis
+
+- improve responsiveness of web applications with static content / templates
+
+## Private Link versus Private Endpoint
