@@ -476,7 +476,7 @@ Redundancy...
   
 Support for Azure Hybrid Benefit, Reservations, SQL Spatial capabilities
 
-## Azure SQL Managed Instance (PaaS)
+## Azure SQL Managed Instance (SQL MI) (PaaS)
 
 Fully-managed SQL Server that you can deploy databases, where MSFT manages the OS and hardware and customer manages the database server instance (NOT the machine).
 
@@ -492,8 +492,7 @@ Best for life-and-shift migrations, instance-scoped features
   - Distributed transactions
 
 Replication...
-  1. 
-  1. failover groups
+  1. failover groups (region-region)
 
 Deployment model(s)...
   1. Single instance
@@ -540,13 +539,21 @@ Best for migrations and applications requiring OS-level access
 Deployment model(s)...
   1. SQL virtual machine
 
-Redundancy
+Redundancy...
   - local redundancy / availability sets
   - leverage zone redundancy for high availability
 
 Supports...
   - Azure Hybrid Benefit
   - SSIS
+
+High availability...
+  - Always on availability groups
+    - data copied on multiple VMs
+    - no shared storage
+  - Always on failover cluster instances (FCI) (Always on FCI)
+    - involves shared storage
+    - does NOT handle disaster recovery
 
 ## Azure Database Migration Service
 
@@ -1239,6 +1246,7 @@ Flow from subnet through NVAs
 ## Azure Backup
 
 Supports Windows and Linux machines
+Supports Blob Storage
 
 ## Azure Recovery Services
 
@@ -1249,8 +1257,8 @@ Supports Windows and Linux machines
 
 - Replication of Azure and on-premises VMs within continuous time frame
 
-Does not support 
-  - blobs
+> [!IMPORTANT]
+> Does NOT support blobs
   
 ## Azure Cache for Redis
 
