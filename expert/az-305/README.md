@@ -20,16 +20,19 @@ Foundational Phases...
       - governance controls
 4. Adopt 
     - migrate workloads
-    - innovation / modernization of existing workloads
+    - **innovation** / modernization of existing workloads
     - build new cloud-native workloads/features
 
       ### Migration
 
+      > [!IMPORTANT]
+      > ACCESS, DEPLOY, RELEASE
+
       1. Access
-          - **Rehost**: lift-and-shift, no code changes
-          - **Refactor**: repackage with minimal changes to leverage PaaS options
-          - **Rearchitect**: optimize app architecture for cloud scalability, like monolithic --> microservices
-          - **Rebuild**: rebuild the app using Azure technologies
+          - **Rehost**: **lift-and-shift**, no code changes
+          - **Refactor**: repackage with minimal changes to **leverage PaaS options**
+          - **Rearchitect**: **optimize** app architecture for cloud scalability, like monolithic --> microservices
+          - **Rebuild**: rebuild the app using new, Azure technologies
       2. Deploy
       3. Release
 
@@ -654,7 +657,11 @@ Scalable, secure data lake storage for large-scale analytics with high throughpu
     - Script? PowerShell, CLI, HDFS CLI, SKDs
   - Access control 
     - Azure RBAC
+    - Azure ABAC
     - ACLs
+
+    > [!TIP]
+    > Azure RBAC \> Azure ABAC \> ACLs
 
 Supports **any** type of data
   - unstructured
@@ -852,7 +859,7 @@ Customer-provided keys
 
 ## Azure Synapse Analytics
 
-MPP architecture for real-time analysis (through running queries) of serverless / large-scale data
+MPP architecture for real-time log analysis (through running queries) of serverless / large-scale data
   - discovery
   - integration
   - transformation
@@ -865,14 +872,14 @@ Architecture...
 Components...
   - SQL pool: serverless or dedicated resource models for node-based architecture
   - Spark pool: clusters that run Apache Spark; Python, C#, Scala, SQL
-  - pipelines: applies capabilities of Azure Data Factory
+  - pipelines: applies capabilities of Azure Data Factory; Synapse does not support shared self-hosted runtimes.
   - Synapse Link: connect to Cosmos DB
   - Synapse Studio: web-based IDE for Synapse Analytics
 
 Notes...
   - T-SQL queries to be able to query relation an nonrelational
   - Save data as SQL tables
-  - Supports PowerBI and ML 
+  - Supports linking to PowerBI and ML 
 
 Use cases...
   - various data sources
@@ -994,7 +1001,7 @@ Hot...
 
 ## Azure Front Door
 
-Routes clients to fastest and most available app backend
+Global solution, routes clients to fastest and most available app backend
   - L7 / Http / Https
   - Internet-facing application backend can be hosted inside / outside Azure
 
@@ -1005,6 +1012,10 @@ Features...
   - Session affinity
   - SSL termination
   - leverage WAF
+
+## Azure CDN (Content Delivery Network)
+
+Global solution that caches content at physical, strategically-placed nodes to reduce latency.
 
 ## Azure ExpressRoute
 
@@ -1226,6 +1237,13 @@ Enable filtering with Azure Firewall or forced tunneling
 Flow from subnet through NVAs
 
 ## Azure Backup
+
+Supports Windows and Linux machines
+
+## Azure Recovery Services
+
+> [!IMPORTANT]
+> MARS agent does not support Linux.
 
 ## Azure Site Recovery
 
