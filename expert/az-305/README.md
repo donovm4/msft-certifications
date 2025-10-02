@@ -23,7 +23,7 @@ Foundational Phases...
     - **innovation** / modernization of existing workloads
     - build new cloud-native workloads/features
 
-      ### Migration
+  ### Migration
 
 > [!IMPORTANT]  
 > ACCESS, DEPLOY, RELEASE
