@@ -25,8 +25,8 @@ Foundational Phases...
 
       ### Migration
 
-      > [!IMPORTANT]
-      > ACCESS, DEPLOY, RELEASE
+> [!IMPORTANT]  
+> ACCESS, DEPLOY, RELEASE
 
       1. Access
           - **Rehost**: **lift-and-shift**, no code changes
@@ -444,8 +444,8 @@ Storage sizes...
   - Hyper-scale
     - 10 `GB` - 128 `TB`
 
-  > [!IMPORTANT]
-  > [Service tiers](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-sql-database-vcore?view=azuresql#service-tiers)
+> [!IMPORTANT]
+> [Service tiers](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-sql-database-vcore?view=azuresql#service-tiers)
 
 Deployment model(s)...
   1. single instance
