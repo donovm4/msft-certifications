@@ -25,14 +25,14 @@ Foundational Phases...
 
   ### Migration
 
-> [!IMPORTANT]  
+> [!IMPORTANT]    
 > ACCESS, DEPLOY, RELEASE
 
   1. Access
     - **Rehost**: **lift-and-shift**, no code changes
     - **Refactor**: repackage with minimal changes to **leverage PaaS options**
     - **Rearchitect**: **optimize** app architecture for cloud scalability, like monolithic --> microservices
-    - **Rebuild**: rebuild the app using new, Azure technologies
+    - **Rebuild**: rebuild the app using new, Azure technologies <-- limited lifespan and support
   2. Deploy
   3. Release
 
@@ -47,6 +47,7 @@ Operational...
       - policy enforcement
       - access controls
       - compliance monitoring
+      - cost management
 2. Secure
     - protect the environment
 3. Manage
@@ -217,7 +218,12 @@ Fast fully-managed big-data analytics platform, optimized for querying and analy
 
 ## Azure Event Hubs
 
-Big-data data-streaming service capable of millions of events per second, with Apache Kafka compatibility.
+Big-data data-**streaming** service capable of millions of events per second, with Apache Kafka compatibility.
+
+Key words:
+  - streaming
+  - internet-connected devices
+  - Apache Kafka
 
 ## MSFT Entra ID
 
@@ -290,7 +296,7 @@ Provides IAM solutions for effective user management while keeping compliance in
 
 ## MSFT Entra Application Proxy
 
-Allow on-premises apps to use access tokens from Entra ID
+Allow on-premises apps to use access tokens <--> Entra ID
 
 ## Role-based Access Control (RBAC)
 
@@ -398,6 +404,10 @@ Leverage Azure Key Vault for storing encryption keys _securely_
 Fully-managed, serverless NoSQL, relational, vector database, supporting unstructured _and_ semi-structured data **without** fixed schema
   - high performance (single-digit millisecond)
   - global distribution (lower latency)
+
+  > [!NOTE]  
+  > Regional failover
+
   - scalability
 
 API supported:
@@ -408,10 +418,14 @@ API supported:
   - MongoDB
   - Table
 
+> [!NOTE]  
+> Optimized for JSON
+
 Backup...
   - continuous backup
   > Not supported by Azure Backup
 
+> [!IMPORTANT]    
 > 'NoSQL' = Not Only SQL; means that the database does not rely on traditional tabled-based relational model.
 
 > Look into asynchronous / synchronous operations
@@ -444,7 +458,7 @@ Storage sizes...
   - Hyper-scale
     - 10 `GB` - 128 `TB`
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > [Service tiers](https://learn.microsoft.com/en-us/azure/azure-sql/database/service-tiers-sql-database-vcore?view=azuresql#service-tiers)
 
 Deployment model(s)...
@@ -667,7 +681,7 @@ Scalable, secure data lake storage for large-scale analytics with high throughpu
     - Azure ABAC
     - ACLs
 
-    > [!TIP]
+    > [!TIP]  
     > Azure RBAC \> Azure ABAC \> ACLs
 
 Supports **any** type of data
@@ -676,8 +690,8 @@ Supports **any** type of data
     - including JSON
   - structured
 
-  > [!TIP]
-  > Good for storing large volumes of _text_ data
+  > [!TIP]  
+  > Good for storing large volumes of unstructured _text_ data
 
 Supports HNS, Hadoop (HDFS), POSIX
 
@@ -695,7 +709,7 @@ Redundancy...
   - built-in LRS
   - manual configuration of data replication
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Azure Back DOES NOT support ADLS
 
 ### Azure Files
@@ -752,10 +766,12 @@ Accessible via REST-based interface
 
 Fully-managed message broker to decouple apps and services
   - Supports publish-subscribe and message queues
+  - supports polling workloads
 
-If you want apps to receive messages without polling
-First-In FIrst-Out required
-Transactional behavior / Atomicity required
+Use cases: 
+- If you want apps to receive messages without polling
+- First-In FIrst-Out required
+- Transactional behavior / Atomicity required
 
 
 ### Azure Tables
@@ -894,7 +910,7 @@ Use cases...
   - ADLS integration
   - real-time analytics
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > MPP = Massively Parallel Processing
 
 ## Azure Data Factory
@@ -1112,7 +1128,7 @@ Benefits...
 
 ## Hardware Security Module (HSM)
 
-- customer specific security domain
+- customer-specific security domain
 
 ## Azure Policy
 
@@ -1146,6 +1162,13 @@ Process...
   4. Review pricing models (reservations, savings plans, AHUB)
   5. Review storage options
   5. What's the OS?
+
+#### Optimzed machines
+
+- Compute-optimized for high CPU-to-memory ratios
+- Storage-optimized for disk I/O latency
+- Memory-optimized for high Memory-to-COU ratios
+  - RAM, streaming, caching
 
 ### Virtual Machine Scale Sets (VMSS)
 
@@ -1198,7 +1221,7 @@ Considerations...
   - securely manage and govern images
   - monitor resource activity
 
-### AKS
+### Azure Kubernetes Service (AKS)
 
 Kubernetes container (full-fledged) orchestration and management on Azure
   - docker support
@@ -1212,6 +1235,9 @@ Horizontal pod autoscaler...
 
 Cluster autoscaler...
   - scales nodes based on node constraints
+
+Supports: 
+  - Oracle WebJob
 
 ### Messaging and Events
 
@@ -1250,14 +1276,14 @@ Supports Blob Storage
 
 ## Azure Recovery Services
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > MARS agent does not support Linux.
 
 ## Azure Site Recovery
 
 - Replication of Azure and on-premises VMs within continuous time frame
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Does NOT support blobs
   
 ## Azure Cache for Redis
