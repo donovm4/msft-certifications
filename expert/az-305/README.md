@@ -225,6 +225,9 @@ Key words:
   - internet-connected devices
   - Apache Kafka
 
+> [!NOTE]
+> Event Grid --> Event Hubs --> Azure Function app --> Azure Synapse
+
 ## MSFT Entra ID
 
 Centralized cloud-based identity and access management (IAM) service
@@ -898,11 +901,14 @@ Components...
   - pipelines: applies capabilities of Azure Data Factory; Synapse does not support shared self-hosted runtimes.
   - Synapse Link: connect to Cosmos DB
   - Synapse Studio: web-based IDE for Synapse Analytics
+  > [!IMPORTANT]
+  > Should you need _multiple_ 'self-hosted runtimes', migrate to Data Factory pipelines
 
-Notes...
-  - T-SQL queries to be able to query relation an nonrelational
-  - Save data as SQL tables
-  - Supports linking to PowerBI and ML 
+> [!NOTE]
+> 
+>  - T-SQL queries to be able to query relation an nonrelational
+>  - Save data as SQL tables
+>  - Supports linking to PowerBI and ML 
 
 Use cases...
   - various data sources
@@ -1026,15 +1032,21 @@ Hot...
 
 Global solution, routes clients to fastest and most available app backend
   - L7 / Http / Https
-  - Internet-facing application backend can be hosted inside / outside Azure
+  - **Internet-facing** application backend can be hosted inside / outside Azure
+  - leverages global edge -> routing to nearest healthy backend
 
 Features...
+  - low latency
   - URL-based routing
   - Priority-based routing
   - multi-site hosting
   - Session affinity
-  - SSL termination
+  - **SSL** termination / offloading
   - leverage WAF
+  - auto-failover
+
+> [!NOTE]
+> Quicker failover versus Traffic Manager
 
 ## Azure CDN (Content Delivery Network)
 
@@ -1078,10 +1090,8 @@ Sends encrypted traffic between Azure VNet and on-premises location(s), over the
 
 ## Azure Traffic Manager
 
-DNS-based global load balancer
+**DNS**-based, **global** load balancer
   - geographic routing
-
-
 
 | Service             | Traffic     | Global/Regional |
 | -------             | -------     | --------------- |
@@ -1089,6 +1099,9 @@ DNS-based global load balancer
 | Traffic Manager     | non HTTP/S  | Global          |
 | Application Gateway | HTTP/S      | Regional        |
 | Azure Load Balancer | non HTTP/S  | Regional        |
+
+> [!NOTE]
+> Slower failover versus Front Door
 
 ## Password Hash Sync (PHS)
 
@@ -1194,12 +1207,15 @@ HTTP-based service for web jobs, RESTful PIs, mobile backends
   - built-in load balancing
   - CI/CD support/enablement
 
-
-
 #### Function App
 
 Consumption plan
   - Maximum timeout: `5`-`10` minutes
+
+#### Logic App
+
+Automate **serverless** workflows to integrate applications (cloud + on-prem)
+Supports `1400` built-in **triggers** / **connectors**
 
 ### Azure Container Instances (ACI)
 
@@ -1247,7 +1263,7 @@ Supports:
 
 ### Azure App Configuration
 
-Central management of application settings and feature flags
+Central management of application settings, feature flags, connection strings
 
 ### Network Requirements
 
@@ -1277,7 +1293,7 @@ Supports Blob Storage
 ## Azure Recovery Services
 
 > [!IMPORTANT]  
-> MARS agent does not support Linux.
+> MARS agent DOES NOT support Linux.
 
 ## Azure Site Recovery
 
