@@ -923,7 +923,7 @@ Use cases...
 
 Cloud-based serverless ETL (Extract, Transform, Load) data integration service
   - pipelines for scheduling jobs
-  - near real-time
+  - near real-time analytics / logs
   - low code/no code
 
 Big data: lots of raw, unorganized data from various systems
@@ -1030,7 +1030,7 @@ Hot...
 
 ## Azure Front Door
 
-Global solution, routes clients to fastest and most available app backend
+**Global** solution, routes clients to fastest and most available app backend
   - L7 / Http / Https
   - **Internet-facing** application backend can be hosted inside / outside Azure
   - leverages global edge -> routing to nearest healthy backend
@@ -1092,6 +1092,7 @@ Sends encrypted traffic between Azure VNet and on-premises location(s), over the
 
 **DNS**-based, **global** load balancer
   - geographic routing
+  - inter-regional
 
 | Service             | Traffic     | Global/Regional |
 | -------             | -------     | --------------- |
@@ -1102,6 +1103,10 @@ Sends encrypted traffic between Azure VNet and on-premises location(s), over the
 
 > [!NOTE]
 > Slower failover versus Front Door
+
+## Azure Load Balancer
+
+Regional, `TCP`/`UDP`-based load balancer
 
 ## Password Hash Sync (PHS)
 
@@ -1200,7 +1205,17 @@ Run large-scale apps efficiently
 
 Premium V2 and above support Availability Zones
 
-### App Service
+> [!IMPORTANT]
+> There is a difference between **Autoscale** and **Automatic Scaling**
+
+Autoscale: define scaling rules based on schedules and resources
+- Standard+
+
+Automatic scaling: scaling with prewarmed instances
+- Premium V2
+- Premium V3
+
+### Web App / App Service
 
 HTTP-based service for web jobs, RESTful PIs, mobile backends
   - lift-and-shift
@@ -1305,5 +1320,15 @@ Supports Blob Storage
 ## Azure Cache for Redis
 
 - improve responsiveness of web applications with static content / templates
+- **regional** service component
 
 ## Private Link versus Private Endpoint
+
+
+## Azure API Management
+
+If leveraging JSON Web Tokens... rememeber the key words:
+  - Azure Active Directory (MSFT Entra)
+    - grants permission
+  - API Management (obviously)
+    - configure validation policies
