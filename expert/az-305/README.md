@@ -32,7 +32,7 @@ Foundational Phases...
     - **Rehost**: **lift-and-shift**, no code changes
     - **Refactor**: repackage with minimal changes to **leverage PaaS options**
     - **Rearchitect**: **optimize** app architecture for cloud scalability, like monolithic --> microservices
-    - **Rebuild**: rebuild the app using new, Azure technologies <-- limited lifespan and support
+    - **Rebuild**: rebuild the app using new, Azure technologies <-- **limited lifespan and support**
   2. Deploy
   3. Release
 
@@ -569,7 +569,7 @@ High availability...
     - data copied on multiple VMs
     - no shared storage
   - Always on failover cluster instances (FCI) (Always on FCI)
-    - involves shared storage
+    - requires **shared storage**
     - does NOT handle disaster recovery
 
 ## Azure Database Migration Service
@@ -684,7 +684,7 @@ Scalable, secure data lake storage for large-scale analytics with high throughpu
     - Azure ABAC
     - ACLs
 
-    > [!TIP]  
+    > [!IMPORTANT]  
     > Azure RBAC \> Azure ABAC \> ACLs
 
 Supports **any** type of data
@@ -713,7 +713,7 @@ Redundancy...
   - manual configuration of data replication
 
 > [!IMPORTANT]  
-> Azure Back DOES NOT support ADLS
+> Azure Backup DOES NOT support ADLS
 
 ### Azure Files
 
@@ -756,7 +756,7 @@ Workloads...
 
 > Accessible via internet Small Computer Systems Interface (iSCSI)
 
-### Azure Queues
+### Azure Storage Queues
 
 Asynchronous message queueing for application components
   - 80 GB needed to be stored in one queue
@@ -765,17 +765,22 @@ Asynchronous message queueing for application components
 
 Accessible via REST-based interface
 
+Queue message `64` KB max
+
 ### Service Bus Queues
 
 Fully-managed message broker to decouple apps and services
-  - Supports publish-subscribe and message queues
-  - supports polling workloads
+  - Supports **publish-subscribe** (also pubsub, pub-sub)
+  - Supports message queues
+  - supports **polling** workloads
 
 Use cases: 
 - If you want apps to receive messages without polling
-- First-In FIrst-Out required
+- **First-In First-Out** (FIFO) required
 - Transactional behavior / Atomicity required
 
+Limitations:
+  - cannot exceed `80` GB
 
 ### Azure Tables
 
@@ -1305,6 +1310,8 @@ Flow from subnet through NVAs
 Supports Windows and Linux machines
 Supports Blob Storage
 
+DOES NOT support ADLS
+
 ## Azure Recovery Services
 
 > [!IMPORTANT]  
@@ -1315,7 +1322,8 @@ Supports Blob Storage
 - Replication of Azure and on-premises VMs within continuous time frame
 
 > [!IMPORTANT]  
-> Does NOT support blobs
+> Does NOT support blobs.  
+> NOT designed to be used for Files replication.
   
 ## Azure Cache for Redis
 
