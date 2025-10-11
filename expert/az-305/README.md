@@ -26,9 +26,9 @@ Foundational Phases...
   ### Migration
 
 > [!IMPORTANT]    
-> ACCESS, DEPLOY, RELEASE
+> ASSESS, DEPLOY, RELEASE
 
-  1. Access  
+  1. Assess  
     - **Rehost**: **lift-and-shift**, no code changes.  
     - **Refactor**: repackage with minimal changes to **leverage PaaS options**.  
     - **Rearchitect**: **optimize** app architecture for cloud scalability, like monolithic --> microservices.  
@@ -39,7 +39,7 @@ Foundational Phases...
 Operational...
 1. Govern
     - build a team
-    - access risks
+    - assess risks
     - document policies
     - enforce policies
     - monitor compliance
