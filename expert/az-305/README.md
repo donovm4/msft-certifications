@@ -28,13 +28,13 @@ Foundational Phases...
 > [!IMPORTANT]    
 > ACCESS, DEPLOY, RELEASE
 
-  1. Access
+  1. Access  
     - **Rehost**: **lift-and-shift**, no code changes.  
     - **Refactor**: repackage with minimal changes to **leverage PaaS options**.  
     - **Rearchitect**: **optimize** app architecture for cloud scalability, like monolithic --> microservices.  
     - **Rebuild**: rebuild the app using new, Azure technologies <-- **limited lifespan and support**.  
-  2. Deploy
-  3. Release
+  2. Deploy  
+  3. Release  
 
 Operational...
 1. Govern
