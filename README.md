@@ -5,7 +5,7 @@
 ### fundamentals
 
 - [x] AZ-900
-- [ ] AI-900
+- [x] AI-900
 - [ ] DP-900
 - [x] SC-900
 
